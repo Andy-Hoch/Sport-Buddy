@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_28_130144) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_28_152047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_130144) do
     t.datetime "end_time", precision: nil
     t.integer "skill_level"
     t.integer "max_attendees"
-    t.decimal "price"
+    t.float "price"
     t.bigint "user_id", null: false
     t.bigint "venue_id", null: false
     t.bigint "chatroom_id", null: false
