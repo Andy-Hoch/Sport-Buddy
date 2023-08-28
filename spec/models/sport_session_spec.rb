@@ -24,7 +24,7 @@ RSpec.describe SportSession, type: :model do
     it { should belong_to(:venue) }
     it { should belong_to(:chatroom) }
     it { should have_many(:attendees) }
-    it { should have_many(:partcipants).through(:attendees).source(:user) }
+    it { should have_many(:participants).through(:attendees).source(:user) }
     it { should have_many(:messages) }
     it { should have_many(:session_categories) }
     it { should have_many(:sport_categories).through(:session_categories) }
