@@ -76,4 +76,11 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'simplecov', require: false
+  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 6.0.0'
+  gem "rubocop-rspec"
+  gem "rubocop-capybara"
+  gem 'shoulda-matchers', '~> 5.0' # provides RSpec one-liners to test common Rails functionality
+  gem 'warden-rspec-rails'
 end
