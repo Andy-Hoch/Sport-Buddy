@@ -3,9 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :attendee
-  belongs_to :messages
-  has_many :sport_sessions
+  has_many :messages
+  has_many :my_events, class_name: "SportSession"
+
+  has_many :attendees
+  has_many :attendings, through: :attendees, source: :sport_session
 
   validates :first_name, presence: true
   validates :last_name, presence: true
