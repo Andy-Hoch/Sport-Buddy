@@ -2,7 +2,7 @@
 
 if ! foreman version &> /dev/null
 then
-  echo "Running the Filipa Script..."
+  echo "Running the update-local Script..."
   echo "Pull origin "
   git pull origin main
   echo "Installing dependencies..."
