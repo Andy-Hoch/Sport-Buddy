@@ -1,0 +1,39 @@
+<div class="container py-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="bg-white rounded p-4 shadow">
+        <h2 class="pb-3">Create your own Sport Session</h2>
+        <%= simple_form_for @sport_session do |f| %>
+          <div class="form-floating mb-3">
+            <%= f.input_field :title, class: "form-control mb-3", placeholder: "Title" %>
+            <%= f.label :title, 'Your Title please' %>
+          </div>
+          <div class="form-floating mb-3">
+            <%= f.input_field :description, class: "form-control mb-3", placeholder: "Description" %>
+            <%= f.label :description, 'Your Description please' %>
+          </div>
+          <div class="form-floating mb-3">
+            <%= f.input_field :address, class: "form-control mb-3", placeholder: "Address" %>
+            <%= f.label :address, 'Your Address please' %>
+          </div>
+          <%= f.input :start_time %>
+          <%= f.input :end_time %>
+          <p class="text-danger">"Sport-Category"-Selection is missing</p>
+          <div class="form-floating mb-3">
+            <%= f.input_field :skill_level, class: "form-control mb-3", placeholder: "Skill" %>
+            <%= f.label :skill_level, 'Your Skill-Level' %>
+          </div>
+          <div class="form-floating mb-3">
+            <%= f.input_field :max_attendees, class: "form-control mb-3", placeholder: "Attendees" %>
+            <%= f.label :max_attendees, 'How many people can join you?' %>
+          </div>
+          <div class="form-floating mb-3">
+            <%= f.input_field :price, class: "form-control mb-3", placeholder: "Price" %>
+            <%= f.label :price, 'Price per Buddy in €' %>
+          </div>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

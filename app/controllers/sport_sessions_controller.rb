@@ -1,5 +1,5 @@
 class SportSessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %w[index show]
+  skip_before_action :authenticate_user!, only: %w[index show new create]
   before_action :set_sport_session, only: %w[show edit]
 
   def index
