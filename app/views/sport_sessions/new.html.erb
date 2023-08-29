@@ -18,10 +18,12 @@
           </div>
           <%= f.input :start_time %>
           <%= f.input :end_time %>
-          <p class="text-danger">"Sport-Category"-Selection is missing</p>
+
+<p class="text-danger">"Sport-Category"-Selection is missing</p>
+
           <div class="form-floating mb-3">
-            <%= f.input_field :skill_level, class: "form-control mb-3", placeholder: "Skill" %>
-            <%= f.label :skill_level, 'Your Skill-Level' %>
+            <%= f.input_field :skill_level, prompt: "- Select the Skill-Level for this session -", collection: %w[beginner intermediate advanced], class: "form-control mb-3", placeholder: "Skill" %>
+            <%= f.label :skill_level, 'Skill-Level if this session' %>
           </div>
           <div class="form-floating mb-3">
             <%= f.input_field :max_attendees, class: "form-control mb-3", placeholder: "Attendees" %>
@@ -29,7 +31,7 @@
           </div>
           <div class="form-floating mb-3">
             <%= f.input_field :price, class: "form-control mb-3", placeholder: "Price" %>
-            <%= f.label :price, 'Price per Buddy in €' %>
+            <%= f.label :price, 'Total price in €' %>
           </div>
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>

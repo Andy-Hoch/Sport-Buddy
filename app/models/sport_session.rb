@@ -6,4 +6,6 @@ class SportSession < ApplicationRecord
   has_many :participants, through: :attendees, source: :user
   has_many :session_categories
   has_many :sport_categories, through: :session_categories
+
+  enum skill_level: %i[beginner intermediate advanced]
 end
