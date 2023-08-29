@@ -11,7 +11,6 @@ class CreateSportSessions < ActiveRecord::Migration[7.0]
       t.decimal :price
       t.references :user, null: false, foreign_key: true
       t.references :venue, null: false, foreign_key: true
-      t.references :chatroom, null: false, foreign_key: true
 
       t.timestamps
     end
