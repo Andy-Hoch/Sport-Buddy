@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if ! foreman version &> /dev/null
+then
+  echo "Running the Filipa Script..."
+  echo "Pull origin "
+  git pull origin main
+  echo "Installing dependencies..."
+  bundle install
+  echo "Running migrations..."
+  bundle exec rails db:migrate
+  echo "Running seed..."
+  bundle exec rails db:seed
+fi
