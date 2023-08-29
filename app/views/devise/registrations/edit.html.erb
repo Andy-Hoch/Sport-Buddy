@@ -2,35 +2,66 @@
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-6">
       <div class="bg-white rounded p-3 shadow">
-        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+        <h2 class='pb-3'>Edit <%= resource_name.to_s.humanize %></h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
           <%= f.error_notification %>
 
           <div class="form-inputs">
             <div class="row g-3">
-              <div class="col-md-6"><%= f.input :first_name, class: "form-floating" %></div>
-              <div class="col-md-6"><%= f.input :last_name %></div>
+              <div class="col-md-6 form-floating mb-3">
+                <%= f.input_field :first_name, class: 'form-control mb-3', placeholder: 'First Name' %>
+                <%= f.label :first_name, 'First Name' %>
+              </div>
+              <div class="col-md-6 form-floating mb-3">
+                <%= f.input_field :last_name, class: 'form-control mb-3', placeholder: 'Last Name' %>
+                <%= f.label :last_name, 'Last Name' %>
+              </div>
             </div>
             <%= f.input :birth_date %>
-            <%= f.input :phone_number %>
-            <%= f.input :email, required: true, autofocus: true %>
-
+            <div class="form-floating mb-3">
+              <%= f.input_field :phone_number, class: 'form-control mb-3', placeholder: 'Phone Number' %>
+              <%= f.label :phone_number, 'Phone Number'  %>
+            </div>
+            <div class="form-floating mb-3">
+              <%= f.input_field :email,
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email" },
+                          class: 'form-control mb-3',
+                          placeholder: 'Email'%>
+              <%= f.label :email, 'Email' %>
+            </div>
             <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
               <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
             <% end %>
 
-            <%= f.input :password,
-                        hint: "leave it blank if you don't want to change it",
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :password_confirmation,
-                        required: false,
-                        input_html: { autocomplete: "new-password" } %>
-            <%= f.input :current_password,
-                        hint: "we need your current password to confirm your changes",
-                        required: true,
-                        input_html: { autocomplete: "current-password" } %>
+            <div class="form-floating mb-3">
+              <%= f.input_field :password,
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password" },
+                          class: 'form-control mb-3',
+                          placeholder: 'Password'%>
+              <%= f.label :password, 'Password' %>
+            </div>
+            <div class="form-floating mb-3">
+              <%= f.input_field :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password" },
+                          class: 'form-control mb-3',
+                          placeholder: 'Password Confirmation' %>
+              <%= f.label :password_confirmation, 'Password Confirmation' %>
+            </div>
+            <div class="form-floating mb-3">
+              <%= f.input_field :current_password,
+                          hint: "we need your current password to confirm your changes",
+                          required: true,
+                          input_html: { autocomplete: "current-password" },
+                          class: 'form-control mb-3',
+                          placeholder: 'Current Password' %>
+              <%= f.label :current_password, 'Current Password' %>
+            </div>
             <%= f.input :photo, as: :file %>
           </div>
 
