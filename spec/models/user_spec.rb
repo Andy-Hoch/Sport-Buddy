@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
       last_name: :string,
       sex: :integer,
       email: :string,
+      address: :string,
       birth_date: :date,
       encrypted_password: :string,
       phone_number: :string
