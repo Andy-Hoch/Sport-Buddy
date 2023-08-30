@@ -17,7 +17,9 @@
                 <%= f.label :last_name, 'Last Name' %>
               </div>
             </div>
-            <%= f.input :birth_date %>
+            <%= f.input :birth_date,
+                        as: :string,
+                        input_html: { data: { controller: "birthdate" } } %>
             <div class="form-floating mb-3">
               <%= f.input_field :phone_number, class: 'form-control mb-3', placeholder: 'Phone Number' %>
               <%= f.label :phone_number, 'Phone Number'  %>
