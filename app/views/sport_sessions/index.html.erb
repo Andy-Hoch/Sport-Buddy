@@ -1,0 +1,11 @@
+<div class="container my-3">
+  <% if @sport_sessions.empty? %>
+    <p>Sorry, no sessions posted yet! Post one here: <%= link_to "New Sport Session", new_sport_session_path %></p>
+  <% else %>
+    <% @sport_sessions.each do |session| %>
+      <p>
+        <%= session.title %> - Starting at <%= session.start_time.strftime("%a, %d.%m.%Y, %H:%M") %> until <%= session.start_time.strftime("%H:%M") %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
