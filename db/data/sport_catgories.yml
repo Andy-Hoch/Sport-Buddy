@@ -1,0 +1,85 @@
+---
+- :name: 'Tennis',
+  :emoji: '🎾'
+  :card_image: "https://images.unsplash.com/photo-1530915365347-e35b749a0381"
+- :name: 'Table tennis',
+  :emoji: '🏓'
+  :card_image: "https://images.unsplash.com/photo-1611251135345-18c56206b863"
+- :name: 'Squash',
+  :emoji: '🎾'
+  :card_image: "https://images.unsplash.com/photo-1554290813-ec6a2a72e5c7"
+- :name: 'Badminton',
+  :emoji: '🏸'
+  :card_image: "https://images.unsplash.com/photo-1613918431703-aa50889e3be9"
+- :name: 'Padel',
+  :emoji: '🏸'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/anordnung-von-tennisschlaegern-und-baellen_23-2149434236.jpg"
+- :name: 'Judo',
+  :emoji: '🥋'
+  :card_image: "https://images.unsplash.com/photo-1603210185603-57fc717c4456"
+- :name: 'Brazilian Jiu Jitsu',
+  :emoji: '🥋'
+  :card_image: "https://images.unsplash.com/photo-1585537884613-1a9bcd024983"
+- :name: 'Karate & Tae Kwon Do ',
+  :emoji: '🥋'
+  :card_image: "https://images.unsplash.com/photo-1560631820-07993da0af22"
+- :name: 'Kung Fu',
+  :emoji: '🥋'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/leute-die-taekwondo-handgesten-zeigen_23-2149908498.jpg"
+- :name: 'Sword fighting',
+  :emoji: '🤺'
+  :card_image: "https://images.unsplash.com/photo-1636812028922-023445fbab51"
+- :name: 'Boxing & Kickboxing',
+  :emoji: '🥊'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/blick-auf-ein-paar-boxhandschuhe_23-2150367713.jpg"
+- :name: 'Football',
+  :emoji: '⚽'
+  :card_image: "https://images.unsplash.com/photo-1606925797300-0b35e9d1794e"
+- :name: 'Basketball',
+  :emoji: '🏀'
+  :card_image: "https://images.unsplash.com/photo-1627627256672-027a4613d028"
+  :name: 'Handball',
+  :emoji: '🤾'
+  :card_image: "https://images.unsplash.com/photo-1513028738826-f000cded30a4"
+- :name: 'Volleyball',
+  :emoji: '🏐'
+  :card_image: "https://images.unsplash.com/photo-1612872087720-bb876e2e67d1"
+- :name: 'Rugby',
+  :emoji: '🏉'
+  :card_image: "https://images.unsplash.com/photo-1480099225005-2513c8947aec"
+- :name: 'Baseball',
+  :emoji: '⚾'
+  :card_image: "https://images.unsplash.com/photo-1508344928928-7165b67de128"
+- :name: 'Cricket',
+  :emoji: '🏏'
+  :card_image: "https://images.unsplash.com/photo-1624526267942-ab0ff8a3e972"
+- :name: 'Running',
+  :emoji: '🏃‍♀️'
+  :card_image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5"
+- :name: 'Swimming',
+  :emoji: '🏊‍♂️'
+  :card_image: "https://images.unsplash.com/photo-1438029071396-1e831a7fa6d8"
+- :name: 'Fitness',
+  :emoji: '🏋️‍♂️'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/afrikanische-schlanke-frau-die-bauchmuskeln-streckt-waehrend-sie-auf-yoga-swiss-ball-sitzt-und-morgens-im-wohnzimmer-trainiert_482257-2294.jpg"
+- :name: 'Yoga',
+  :emoji: '🧘'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/junges-paar-das-zusammen-yoga-praktiziert-innenbild-des-gutaussehenden-gebraeunten-kerls-auf-der-matte-die-stehende-posen-macht-um-beine-zu-staerken-arme-zu-strecken-und-nach-oben-zu-schauen_343059-3095.jpg"
+- :name: 'Climbing',
+  :emoji: '🧗‍♂️'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/nahaufnahme-der-maennlichen-hand-mit-talkpuder-an-der-boulderwand_74855-23550.jpg"
+- :name: 'Skating',
+  :emoji: '⛸️'
+  :card_image: "https://images.unsplash.com/photo-1589663924441-4bbcd2fb4391"
+- :name: 'Skateboarding',
+  :emoji: '🛹'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/beine-des-skaters_23-2147723004.jpg"
+- :name: 'Darts',
+  :emoji: '🎯'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/pfeile-im-brett_144627-23078.jpg "
+- :name: 'Pool & Snooker',
+  :emoji: '🎱'
+  :card_image: "https://img.freepik.com/fotos-kostenlos/nahaufnahme-zur-hand-mit-dem-ziel-poolspiel-zu-spielen_329181-15479.jpg"
+- :name: 'Dance',
+  :emoji: '💃'
+  :card_image: "https://images.unsplash.com/photo-1504609813442-a8924e83f76e"

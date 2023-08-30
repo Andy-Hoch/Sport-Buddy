@@ -1,0 +1,77 @@
+---
+- :title: 'BJJ takedowns practice'
+  :description: 'Looking to work on upper body grip takedowns',
+  :start_time: '2023-09-30, 10:30',
+  :end_time: '2023-09-30, 12:30',
+  :skill_level: 'Intermediate',
+  :max_attendees: '2',
+  :price: '10'
+- :title: 'Tennis serve returns'
+  :description: 'Hoping to practice serve returns',
+  :start_time: '2023-09-12, 14:00',
+  :end_time: '2023-09-12, 16:00',
+  :skill_level: 'Intermediate',
+  :max_attendees: '2',
+  :price: '20'
+- :title: 'Knockabout tennis game'
+  :description: 'Looking for a regular tennis partner for fun/ semi-competitive games',
+  :start_time: '2023-09-15, 15:00',
+  :end_time: '2023-09-15, 17:00',
+  :skill_level: 'Intermediate',
+  :max_attendees: '2',
+  :price: '20'
+- :title: 'Mixed doubles tennis game'
+  :description: 'Any mixed doubles partners looking for a game? We are decent club-level players looking for new pairs to play against.',
+  :start_time: '2023-09-20, 15:00',
+  :end_time: '2023-09-20, 17:00',
+  :skill_level: 'Intermediate',
+  :max_attendees: '4',
+  :price: '20'
+- :title: 'Swing dance practice'
+  :description: 'I am looking for a partner to practice basic swing dance moves',
+  :start_time: '2023-09-30, 10:30',
+  :end_time: '2023-08-30, 12:30',
+  :skill_level: 'Beginner',
+  :max_attendees: '2',
+  :price: '15'
+- :title: 'Pickup basketball in the park'
+  :description: 'Anyone interested in a 2-on-2 pickup basketball game in the park?',
+  :start_time: '2023-09-10, 15:30',
+  :end_time: '2023-09-10, 17:00',
+  :skill_level: 'Intermediate',
+  :max_attendees: '4',
+  :price: '0'
+- :title: 'BJJ leglocks escape practice'
+  :description: 'Looking to practice escapes from leglock',
+  :start_time: '2023-09-16, 07:30',
+  :end_time: '2023-09-16, 08:30',
+  :skill_level: 'Intermediate',
+  :max_attendees: '2',
+  :price: '10'
+- :title: 'Ballroom dance practice'
+  :description: 'I am looking for an experienced partner to practice advanced/ competition-level moves',
+  :start_time: '2023-09-30, 10:30',
+  :end_time: '2023-08-30, 12:30',
+  :skill_level: 'Advanced',
+  :max_attendees: '2',
+  :price: '15'
+
+# ballroom = Sport_session.new(
+#   title: 'Ballroom dance practice',
+#   description: 'I am looking for an experienced partner to practice advanced/ competition-level moves',
+#   address: 'Neue Weyerstraße 5, 50676 Köln',
+#   start_time: DateTime.parse('2023-09-30, 10:30'),
+#   end_time: DateTime.parse('2023-08-30, 12:30'),
+#   skill_level: 'Advanced',
+#   max_attendees: '2',
+#   price: '15'
+# )
+
+# :address: 'Stolberger Str. 370, 50933 Köln',
+# :address: 'Poller Weg 1, 51149 Köln',
+#  :address: 'Poller Weg 1, 51149 Köln',
+#  :address: 'Poller Weg 1, 51149 Köln',
+#  :address: 'Neue Weyerstraße 5, 50676 Köln',
+#  :address: 'Deutzer Werft, 50679 Köln',
+#  :address: 'Stolberger Str. 370, 50933 Köln',
+#  :address: 'Neue Weyerstraße 5, 50676 Köln',
