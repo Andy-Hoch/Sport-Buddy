@@ -20,6 +20,7 @@ class SportSessionsController < ApplicationController
     @sport_session.new(sport_session_params)
     @sport_session.user = current_user
     @sport_session.chatroom = Chatroom.create
+    authorize @sport_session
     if @sport_session.save
       redirect_to sport_sessions_path
     else
