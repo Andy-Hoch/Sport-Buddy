@@ -1,0 +1,30 @@
+$menu-item-height: 75px;
+$menu-item-width: 75px;
+
+.menubar {
+  background-color: $green300;
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+}
+
+a.menu-item {
+  height: $menu-item-height;
+  width: $menu-item-height;
+  padding: 20px 0 4px 0;
+  color: $body-color;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  i {
+    font-size: 30px;
+  }
+  p {
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
