@@ -30,7 +30,7 @@
 - :title: 'Swing dance practice'
   :description: 'I am looking for a partner to practice basic swing dance moves',
   :start_time: '2023-09-30, 10:30',
-  :end_time: '2023-08-30, 12:30',
+  :end_time: '2023-09-30, 12:30',
   :skill_level: 'Beginner',
   :max_attendees: '2',
   :price: '15'
@@ -51,7 +51,7 @@
 - :title: 'Ballroom dance practice'
   :description: 'I am looking for an experienced partner to practice advanced/ competition-level moves',
   :start_time: '2023-09-30, 10:30',
-  :end_time: '2023-08-30, 12:30',
+  :end_time: '2023-09-30, 12:30',
   :skill_level: 'Advanced',
   :max_attendees: '2',
   :price: '15'
