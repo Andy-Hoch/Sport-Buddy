@@ -1,3 +1,3 @@
 class SportCategory < ApplicationRecord
-  belongs_to :sport_session
+  has_many :sport_sessions
 end

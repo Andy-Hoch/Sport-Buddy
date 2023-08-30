@@ -7,7 +7,6 @@ RSpec.describe SportSession, type: :model do
       venue_id: :integer,
       title: :string,
       description: :string,
-      address: :string,
       start_time: :datetime,
       end_time: :datetime,
       skill_level: :integer,
@@ -24,7 +23,6 @@ RSpec.describe SportSession, type: :model do
     it { should have_one(:chatroom) }
     it { should have_many(:attendees) }
     it { should have_many(:participants).through(:attendees).source(:user) }
-    it { should have_many(:session_categories) }
-    it { should have_many(:sport_categories).through(:session_categories) }
+    it { should belong_to(:sport_category) }
   end
 end
