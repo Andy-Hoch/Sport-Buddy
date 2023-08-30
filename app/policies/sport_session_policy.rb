@@ -11,11 +11,11 @@ class SportSessionPolicy < ApplicationPolicy
     true
   end
 
-  def show?
+  def new?
     true
   end
 
-  def new?
-    true
+  def create?
+    new?
   end
 end
