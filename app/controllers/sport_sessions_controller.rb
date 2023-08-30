@@ -3,21 +3,24 @@ class SportSessionsController < ApplicationController
   before_action :set_sport_session, only: %w[show edit destroy]
 
   def index
-    @sport_sessions = SportSession.includes(:user_id).all
+    @sport_sessions = policy_scope(SportSession)
   end
 
   def show
     @full = @sport_session.max_attendees == @sport_session.attendees.count?
+    authorize @sport_session
   end
 
   def new
     @sport_session = SportSession.new
+    authorize @sport_session
   end
 
   def create
     @sport_session.new(sport_session_params)
     @sport_session.user = current_user
     @sport_session.chatroom = Chatroom.create
+    authorize @sport_session
     if @sport_session.save
       redirect_to sport_sessions_path
     else
@@ -41,7 +44,7 @@ class SportSessionsController < ApplicationController
   private
 
   def set_sport_session
-    @sport_session = SportSession.find(params[:id])
+    @sport_session = policy_scope(SportSession.find(params[:id]))
   end
 
   def sport_session_params
