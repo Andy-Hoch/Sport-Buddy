@@ -19,6 +19,7 @@
               </div>
             </div>
             <%= f.input :birth_date %>
+            <%= f.input :sex, as: :radio_buttons, collection: ['male', 'female', 'undefined'], class: 'form-control' %>
             <div class="form-floating mb-3">
               <%= f.input_field :phone_number, class: 'form-control mb-3', placeholder: 'Phone Number' %>
               <%= f.label :phone_number, 'Phone Number'  %>
