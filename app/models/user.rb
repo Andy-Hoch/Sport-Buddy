@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :events, through: :attendees, source: :sport_session, dependent: :destroy
 
   has_one_attached :photo
+  enum sex: %i[male female undefined]
 
   validates :first_name, presence: true
   validates :last_name, presence: true
