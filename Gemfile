@@ -49,7 +49,6 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 gem "bootstrap", "~> 5.2"
-gem "dotenv-rails"
 gem "cloudinary"
 gem "devise"
 gem "pundit"
