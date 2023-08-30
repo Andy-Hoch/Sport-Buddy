@@ -16,9 +16,18 @@
             <%= f.input_field :address, class: "form-control mb-3", placeholder: "Address" %>
             <%= f.label :address, 'Your Address please' %>
           </div>
-          <%= f.input :start_time %>
-          <%= f.input :end_time %>
-
+          <div class="row g-3">
+            <div class="col-md-6">
+              <%= f.input :start_time,
+                            as: :string,
+                            input_html: { data: { controller: "flatpickr" } } %>
+            </div>
+            <div class="col-md-6">
+              <%= f.input :end_time,
+                            as: :string,
+                            input_html: { data: { controller: "flatpickr" } } %>
+            </div>
+          </div>
 <p class="text-danger">"Sport-Category"-Selection is missing</p>
 
           <div class="form-floating mb-3">
