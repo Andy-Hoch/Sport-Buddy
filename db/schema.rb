@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_08_30_122231) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_08_30_133657) do
+>>>>>>> main
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,15 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_122231) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "session_categories", force: :cascade do |t|
-    t.bigint "sport_category_id", null: false
-    t.bigint "sport_session_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["sport_category_id"], name: "index_session_categories_on_sport_category_id"
-    t.index ["sport_session_id"], name: "index_session_categories_on_sport_session_id"
-  end
-
   create_table "sport_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -86,7 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_122231) do
   create_table "sport_sessions", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "address"
     t.datetime "start_time", precision: nil
     t.datetime "end_time", precision: nil
     t.integer "skill_level"
@@ -96,8 +90,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_122231) do
     t.bigint "venue_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.float "latitude"
     t.float "longitude"
+=======
+    t.bigint "sport_category_id", null: false
+    t.index ["sport_category_id"], name: "index_sport_sessions_on_sport_category_id"
+>>>>>>> main
     t.index ["user_id"], name: "index_sport_sessions_on_user_id"
     t.index ["venue_id"], name: "index_sport_sessions_on_venue_id"
   end
@@ -135,8 +134,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_122231) do
   add_foreign_key "chatrooms", "sport_sessions"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
-  add_foreign_key "session_categories", "sport_categories"
-  add_foreign_key "session_categories", "sport_sessions"
+  add_foreign_key "sport_sessions", "sport_categories"
   add_foreign_key "sport_sessions", "users"
   add_foreign_key "sport_sessions", "venues"
 end

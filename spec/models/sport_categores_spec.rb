@@ -10,7 +10,6 @@ RSpec.describe SportCategory, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:session_categories) }
-    it { should have_many(:sport_sessions).through(:session_categories) }
+    it { should have_many(:sport_sessions) }
   end
 end
