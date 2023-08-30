@@ -45,6 +45,7 @@ Layout/LineLength:
   Max: 120
   Exclude:
     - "config/initializers/devise.rb"
+    - "app/controllers/application_controller.rb"
 Style/EmptyMethod:
   Enabled: false
 Bundler/OrderedGems:
