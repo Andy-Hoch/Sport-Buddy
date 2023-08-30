@@ -1,9 +1,9 @@
 class SportSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %w[index show new create]
-  before_action :set_sport_session, only: %w[show edit]
+  before_action :set_sport_session, only: %w[show edit destroy]
 
   def index
-    @sport_sessions = SportSession.all
+    @sport_sessions = SportSession.includes(:user_id).all
   end
 
   def show
@@ -29,7 +29,13 @@ class SportSessionsController < ApplicationController
   end
 
   def update
+    @sport_session.update(restaurant_params)
+    redirect_to sport_session_path(@sport_session)
+  end
 
+  def destroy
+    @sport_session.destroy
+    redirect_to sport_sessions_path, status: :see_other
   end
 
   private
@@ -39,6 +45,16 @@ class SportSessionsController < ApplicationController
   end
 
   def sport_session_params
-    params.require(:sport_session).permit(:title, :description, :address, :start_time, :end_time, :skill_level, :max_attendees, :price, :venue_id)
+    params.require(:sport_session).permit(
+      :title,
+      :description,
+      :address,
+      :start_time,
+      :end_time,
+      :skill_level,
+      :max_attendees,
+      :price,
+      :venue_id
+    )
   end
 end
