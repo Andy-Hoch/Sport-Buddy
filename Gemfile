@@ -61,6 +61,7 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "pry-byebug"
   gem "dotenv-rails"
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -86,4 +87,5 @@ group :test do
   gem "rubocop-capybara"
   gem 'shoulda-matchers', '~> 5.0' # provides RSpec one-liners to test common Rails functionality
   gem 'warden-rspec-rails'
+  gem 'rails-controller-testing'
 end
