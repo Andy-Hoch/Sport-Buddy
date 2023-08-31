@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :sport_sessions, only: %w[index show new create] do
     resources :attendees, only: %w[create]
+
+    resources :chatrooms, only: %w[show] do
+      resources :messages, only: %w[create]
+    end
   end
 end
