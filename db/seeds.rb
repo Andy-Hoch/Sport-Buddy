@@ -27,12 +27,14 @@ end
 puts "User database cleaned"
 
 puts "Cleaning up sport categories database..."
-Sport_category.destroy_all
+
+SportCategory.destroy_all
+
 sport_categories_path = File.join(__dir__, "data/sport_categories.yml")
 sport_categories = YAML.load_file(sport_categories_path)
 sport_categories.each do |sport_category|
   puts "Creating sport category #{sport_category[:name]}..."
-  new_sport_category = Sport_category.new(
+  new_sport_category = SportCategory.new(
     {
       name: sport_category[:name],
       emoji: sport_category[:emoji]
@@ -46,12 +48,12 @@ end
 puts "Sport category database cleaned"
 
 puts "Cleaning up sport sessions database..."
-Sport_session.destroy_all
+SportSession.destroy_all
 sport_sessions_path = File.join(__dir__, "data/sport_sessions.yml")
 sport_sessions = YAML.load_file(sport_sessions_path)
 sport_sessions.each do |sport_session|
   puts "Creating sport session #{sport_session[:title]}..."
-  new_sport_session = Sport_session.new(
+  new_sport_session = SportSession.new(
     {
       title: sport_session[:title],
       description: sport_session[:description],
