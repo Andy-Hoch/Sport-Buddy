@@ -13,7 +13,7 @@ class SportSessionsController < ApplicationController
   end
 
   def show
-    @full = @sport_session.max_attendees == @sport_session.attendees.count?
+    @full = @sport_session.max_attendees == @sport_session.attendees.count
     authorize @sport_session
     @marker = { lat: @sport_session.latitude, lng: @sport_session.longitude }
   end
@@ -51,7 +51,7 @@ class SportSessionsController < ApplicationController
   private
 
   def set_sport_session
-    @sport_session = policy_scope(SportSession.find(params[:id]))
+    @sport_session = SportSession.find(params[:id])
   end
 
   def sport_session_params
