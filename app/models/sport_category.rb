@@ -1,5 +1,4 @@
 class SportCategory < ApplicationRecord
-  has_one_attached :card_image
+  has_one_attached :photo
   has_many :sport_sessions
 end
-# test

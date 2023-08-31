@@ -41,7 +41,7 @@ sport_categories.each do |sport_category|
     }
   )
   file = URI.open(sport_category[:card_image])
-  new_sport_category.card_image.attach(io: file, filename: "#{sport_category[:card_image]}.png", content_type: "image/png")
+  new_sport_category.photo.attach(io: file, filename: "#{sport_category[:card_image]}.png", content_type: "image/png")
   new_sport_category.save!
 end
 
