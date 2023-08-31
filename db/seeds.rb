@@ -7,25 +7,85 @@ users_path = File.join(__dir__, "data/users.yml")
 users = YAML.load_file(users_path)
 users.each_with_index do |user, i|
   puts "Creating user #{user[:first_name]}..."
-  new_user = User.new({
-    first_name: user[:first_name],
-    last_name: user[:last_name],
-    sex: user[:sex],
-    address: user[:address],
-    birth_date: Date.parse(user[:birth_date]),
-    phone_number: "+49 17#{i} 123456",
-    email: "#{user[:first_name]}@#{user[:last_name]}.de",
-    password: '123456'
-  })
+  new_user = User.new(
+    {
+      first_name: user[:first_name],
+      last_name: user[:last_name],
+      sex: user[:sex],
+      address: user[:address],
+      birth_date: Date.parse(user[:birth_date]),
+      phone_number: "+49 17#{i} 123456",
+      email: "#{user[:first_name]}@#{user[:last_name]}.de",
+      password: '123456'
+    }
+  )
   file = URI.open(user[:avatar])
   new_user.photo.attach(io: file, filename: "#{user[:first_name]}.png", content_type: "image/png")
   new_user.save!
 end
 
-# puts "User database cleaned"
+puts "User database cleaned"
 
-# puts "Cleaning up sport categories database..."
-# Sport_category.destroy_all
+puts "Cleaning up sport categories database..."
+
+SportCategory.destroy_all
+
+sport_categories_path = File.join(__dir__, "data/sport_categories.yml")
+sport_categories = YAML.load_file(sport_categories_path)
+sport_categories.each do |sport_category|
+  puts "Creating sport category #{sport_category[:name]}..."
+  new_sport_category = SportCategory.new(
+    {
+      name: sport_category[:name],
+      emoji: sport_category[:emoji]
+    }
+  )
+  file = URI.open(sport_category[:card_image])
+  new_sport_category.photo.attach(io: file, filename: "#{sport_category[:card_image]}.png", content_type: "image/png")
+  new_sport_category.save!
+end
+
+puts "Sport category database cleaned"
+
+puts "Cleaning up sport sessions database..."
+SportSession.destroy_all
+sport_sessions_path = File.join(__dir__, "data/sport_sessions.yml")
+sport_sessions = YAML.load_file(sport_sessions_path)
+sport_sessions.each do |sport_session|
+  puts "Creating sport session #{sport_session[:title]}..."
+  new_sport_session = SportSession.new(
+    {
+      title: sport_session[:title],
+      description: sport_session[:description],
+      start_time: Date.parse(sport_session[:start_time]),
+      end_time: Date.parse(sport_session[:end_time]),
+      skill_level: sport_session[:skill_level],
+      max_attendees: sport_session[:max_attendees],
+      price: sport_session[:price]
+    }
+  )
+end
+
+puts "Sport session database cleaned"
+
+puts "Cleaning up venues database..."
+Venue.destroy_all
+venues_path = File.join(__dir__, "data/venues.yml")
+venues = YAML.load_file(venues_path)
+
+venues.each do |venue|
+  puts "Creating venue #{venue[:name]}..."
+  new_venue = Venue.create(
+    {
+      name: venue[:name],
+      address: venue[:address],
+      description: venue[:description]
+    }
+  )
+end
+
+puts "Venue database cleaned"
+
 # puts "Sport categories database cleaned"
 
 # tennis = Sport_category.new(
