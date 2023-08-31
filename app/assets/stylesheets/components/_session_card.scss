@@ -1,3 +1,7 @@
+a:has(.session-card) {
+  text-decoration: none;
+}
+
 .session-card {
   background-color: white;
   .location-name {
