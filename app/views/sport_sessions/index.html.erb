@@ -32,9 +32,9 @@
       </div>
     </div>
   <% else %>
-    <% @sport_sessions.each do |session| %>
+    <% @sport_sessions.sort_by(&:name).each do |session| %>
       <p>
-        <%= session.title %> - Starting at <%= session.start_time.strftime("%a, %d.%m.%Y, %H:%M") %> until <%= session.start_time.strftime("%H:%M") %>
+        <%= session.title %>
       </p>
     <% end %>
   <% end %>

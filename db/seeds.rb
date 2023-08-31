@@ -45,31 +45,9 @@ sport_categories.each do |sport_category|
   new_sport_category.save!
 end
 
-puts "Sport category database cleaned"
-
-puts "Cleaning up sport sessions database..."
-SportSession.destroy_all
-sport_sessions_path = File.join(__dir__, "data/sport_sessions.yml")
-sport_sessions = YAML.load_file(sport_sessions_path)
-sport_sessions.each do |sport_session|
-  puts "Creating sport session #{sport_session[:title]}..."
-  new_sport_session = SportSession.new(
-    {
-      title: sport_session[:title],
-      description: sport_session[:description],
-      start_time: Date.parse(sport_session[:start_time]),
-      end_time: Date.parse(sport_session[:end_time]),
-      skill_level: sport_session[:skill_level],
-      max_attendees: sport_session[:max_attendees],
-      price: sport_session[:price]
-    }
-  )
-end
-
-puts "Sport session database cleaned"
-
 puts "Cleaning up venues database..."
 Venue.destroy_all
+puts "Venue database cleaned"
 venues_path = File.join(__dir__, "data/venues.yml")
 venues = YAML.load_file(venues_path)
 
@@ -83,8 +61,33 @@ venues.each do |venue|
     }
   )
 end
+puts "Sport category database cleaned"
 
-puts "Venue database cleaned"
+puts "Cleaning up sport sessions database..."
+SportSession.destroy_all
+puts "Sport session database cleaned"
+sport_sessions_path = File.join(__dir__, "data/sport_sessions.yml")
+sport_sessions = YAML.load_file(sport_sessions_path)
+sport_sessions.each do |sport_session|
+  puts "Creating sport session #{sport_session[:title]}..."
+  new_sport_session = SportSession.new(
+    {
+      title: sport_session[:title],
+      description: sport_session[:description],
+      start_time: Date.parse(sport_session[:start_time]),
+      end_time: Date.parse(sport_session[:end_time]),
+      skill_level: sport_session[:skill_level],
+      max_attendees: sport_session[:max_attendees],
+      price: sport_session[:price],
+      user: User.all.sample,
+      venue: Venue.all.sample,
+      sport_category: SportCategory.find_by(name: sport_session[:sport_category])
+    }
+  )
+
+  new_sport_session.save!
+  puts new_sport_session
+end
 
 # puts "Sport categories database cleaned"
 
