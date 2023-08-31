@@ -6,9 +6,11 @@
 // External libraries
 @import "bootstrap";
 @import "font-awesome";
+@import "config/banner";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 @import "config/importmaps";
 @import "components/category_card";
+@import "components/avatar_banner";
