@@ -40,8 +40,8 @@ sport_categories.each do |sport_category|
       emoji: sport_category[:emoji]
     }
   )
-  file = URI.open(sport_category[:card_image])
-  new_sport_category.photo.attach(io: file, filename: "#{sport_category[:card_image]}.png", content_type: "image/png")
+  # file = URI.open(sport_category[:card_image])
+  # new_sport_category.photo.attach(io: file, filename: "#{sport_category[:card_image]}.png", content_type: "image/png")
   new_sport_category.save!
 end
 
@@ -72,11 +72,12 @@ puts "Cleaning up venues database..."
 Venue.destroy_all
 venues_path = File.join(__dir__, "data/venues.yml")
 venues = YAML.load_file(venues_path)
+
 venues.each do |venue|
   puts "Creating venue #{venue[:name]}..."
-  new_venue = Venue.new(
+  new_venue = Venue.create(
     {
-      name: venue[:title],
+      name: venue[:name],
       address: venue[:address],
       description: venue[:description]
     }

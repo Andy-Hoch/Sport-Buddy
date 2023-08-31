@@ -2,51 +2,67 @@
 - :name: "Cage MMA Cologne"
   :address: "Stolberger Str. 370, 50933 Köln"
   :description: "Experience modern MMA at CAGE MMA COLOGNE. BJJ and more in a welcoming atmosphere. Your new martial arts gym awaits you!"
+
 - :name: "Brazilian Jiu Jitsu Köln"
   :address: "Dreikönigenstraße 23, 50678 Köln"
   :description: "Welcoming club offering lessons for both gi and no gi"
+
 - :name: "KING Muay Thai / MMA Team Cologne"
   :address: "Neue Weyerstraße 5, 50676 Köln"
   :description: "Established club offering lessons for MMA and no gi grappling"
+
 - :name: "Tennis Club Colonius e.V."
   :address: "Bezirkssportanlage Prälat Ludwig Wolker, Subbelrather Str. 19, 50823 Köln"
   :description: "Relaxed atmosphere in an urban setting"
+
 - :name: "VKC-Tennisclub e.V."
   :address: "Alfred-Schütte-Allee 51, 51105 Köln"
   :description: "VKC Tennis Club TC eV V. is a sports club in Cologne. The popular sports club in NRW offers the following sports activities: tennis and possibly more."
+
 - :name: "Tennisclub Lese Grün-Weiß 1927 e.V. Sekretariat"
   :address: "Friedrich-Schmidt-Straße 99, 50933 Köln"
   :description: "The facility includes 12 tennis courts as well as a tennis practice wall, a children's playground and an all-weather table tennis table."
+
 - :name: "padelBOX Köln-Weiden"
   :address: "Kronstädter Str. 100, 50858 Köln"
   :description: "The padel location in Cologne-Weiden has eight padel courts and five tennis courts."
+
 - :name: "padelBOX Köln-Lövenich"
   :address: "Ottostraße 14, 50859 Köln"
   :description: "Get out of everyday life and onto the court. You can play on three padel courts, a single padel court and four badminton courts until your racket breaks. Come by, it's worth it. Promised!"
+
 - :name: "Boulderplanet"
   :address: "Oskar-Jäger-Straße 143H, 50825 Köln"
   :description: "Over 300 routes from very easy to very difficult await you on Boulderplanet. With functional fitness, cardio and weights, our training planet has everything you need for effective training."
+
 - :name: "K11 | Bouldern in der Südstadt"
   :address: "Kyllstraße 11, 50678 Köln"
   :description: "Our small, fine bouldering hall is located in the middle of the southern part of Cologne. Here you can expect many bouldering walls from easy to the big roof in a relaxed and pleasant atmosphere. Plus the opportunity to enjoy a delicious coffee or a beer in the seating area or outside under the trees. The hall is a few minutes' walk from Chlodwigplatz, parking spaces for bicycles and cars are available."
+
 - :name: "Cologne Dance Center"
   :address: "Venloer Str. 41, 50672 Köln"
   :description: "Largest dance studio in Cologne with over 100 courses 7 days a week"
+
 - :name: "Orlandos Dance Studio"
   :address: "Gladbacher Str. 29, 50672 Köln"
-  :description: ""ORLANDO's Dance Studio" is one of the most successful dance schools in Cologne and Orlando has not only made a name for itself with its high-quality classes, but also with its countless workshops, shows and party animations at home and abroad. He teaches Salsa, Kizomba, Bachata, Merengue and Reggaeton."
+  :description: '"ORLANDO''s Dance Studio" is one of the most successful dance schools in Cologne and Orlando has not only made a name for itself with its high-quality classes, but also with its countless workshops, shows and party animations at home and abroad. He teaches Salsa, Kizomba, Bachata, Merengue and Reggaeton.'
+
 - :name: "La Danza Tanzzentrum"
   :address: "Engelbertstraße 29, 50674 Köln"
   :description: "Dance center for Salsa Cubana and Puerto Rican, Bachata, Kizomba, Tango Argentino, Zouk, Forró and Zumba Fitness. Dance courses, workshops, parties and more."
+
 - :name: "Soccer Arena Köln"
   :address: "Stallagsbergweg 2, 50769 Köln"
   :description: "A total of 3 soccer pitches are played on the latest generation of artificial turf, just like the pros. TOP modernized changing rooms and sufficient parking spaces are available! In our soccer lounge you can relax in a cozy atmosphere before and after the game and enjoy our drinks or small snacks."
+
 - :name: "Tennis- und Soccerhalle"
   :address: "Thurner Kamp 46, 51069 Köln"
   :description: "Book our large and modern tennis and soccer courts in Cologne Dellbrück now. And after the game to the bistro. Subscription bookings are also possible."
+
 - :name: "Billard Cafe Schneider"
   :address: "Kaiser-Wilhelm-Ring 30-32, 50672 Köln"
   :description: "Games, fun and entertainment on 8 pool billiard tables, 1 snooker table and 5 carom billiard tables as well as soft darts"
+
 - :name: "Crazy Ball"
   :address: "Trierer Str. 10, 50676 Köln"
   :description: "Pool billiard tables and soft darts just 300 metres away from Barbarossaplatz"
