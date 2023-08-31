@@ -6,6 +6,7 @@ $menu-item-width: 75px;
   position: fixed;
   bottom: 0px;
   width: 100vw;
+  z-index: 1000;
 }
 
 a.menu-item {
@@ -15,7 +16,7 @@ a.menu-item {
   color: $body-color;
   text-decoration: none;
   text-align: center;
-  border: 2px solid black;
+  border: 0px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,4 +28,9 @@ a.menu-item {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+}
+
+.menubar-spacer {
+  height: $menu-item-height;
+  width: 100vw;
 }
