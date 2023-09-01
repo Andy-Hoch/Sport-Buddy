@@ -12,10 +12,6 @@
             <%= f.input_field :description, class: "form-control mb-3", placeholder: "Description" %>
             <%= f.label :description, 'Your Description please' %>
           </div>
-          <div class="form-floating mb-3">
-            <%= f.input_field :address, class: "form-control mb-3", placeholder: "Address" %>
-            <%= f.label :address, 'Your Address please' %>
-          </div>
           <div class="row g-3">
             <div class="col-md-6">
               <%= f.input :start_time,
@@ -29,10 +25,15 @@
             </div>
           </div>
 <p class="text-danger">"Sport-Category"-Selection is missing</p>
-
           <div class="form-floating mb-3">
-            <%= f.input_field :skill_level, prompt: "- Select the Skill-Level for this session -", collection: %w[beginner intermediate advanced], class: "form-control mb-3", placeholder: "Skill" %>
-            <%= f.label :skill_level, 'Skill-Level if this session' %>
+            <%= f.input :skill_level,
+                        as: :radio_buttons,
+                        collection: %w[beginner intermediate advanced],
+                        collection_wrapper_tag: 'div',
+                        collection_wrapper_class: 'skill-wrapper',
+                        item_wrapper_class: 'skill-item',
+                        input_html: {class: 'skill-selector'}
+            %>
           </div>
           <div class="form-floating mb-3">
             <%= f.input_field :max_attendees, class: "form-control mb-3", placeholder: "Attendees" %>

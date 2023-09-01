@@ -1,0 +1,32 @@
+.skill-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.skill-item {
+  flex: 0 0 30%;
+}
+
+.skill-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.skill-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  padding: 16px 12px;
+  border: 1px solid #EAEAEA;
+  border-radius: $border-radius;
+  background-color: var(--bs-body-bg);
+}
+
+.skill-selector:checked + label {
+  color: white !important;
+  background-color: $primary;
+}

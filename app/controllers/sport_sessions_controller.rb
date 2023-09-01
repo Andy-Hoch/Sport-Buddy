@@ -4,11 +4,18 @@ class SportSessionsController < ApplicationController
 
   def index
     @sport_sessions = policy_scope(SportSession)
+    @markers = @sport_sessions.geocoded.map do |sport_session|
+      {
+        lat: sport_session.latitude,
+        lng: sport_session.longitude
+      }
+    end
   end
 
   def show
-    @full = @sport_session.max_attendees == @sport_session.attendees.count?
+    @full = @sport_session.max_attendees == @sport_session.attendees.count
     authorize @sport_session
+    @marker = { lat: @sport_session.latitude, lng: @sport_session.longitude }
   end
 
   def new
@@ -17,7 +24,7 @@ class SportSessionsController < ApplicationController
   end
 
   def create
-    @sport_session.new(sport_session_params)
+    @sport_session = SportSession.new(sport_session_params)
     @sport_session.user = current_user
     @sport_session.chatroom = Chatroom.create
     authorize @sport_session
@@ -44,7 +51,7 @@ class SportSessionsController < ApplicationController
   private
 
   def set_sport_session
-    @sport_session = policy_scope(SportSession.find(params[:id]))
+    @sport_session = SportSession.find(params[:id])
   end
 
   def sport_session_params
