@@ -4,9 +4,7 @@ class SportSessionsController < ApplicationController
 
   def index
     @sport_sessions = policy_scope(SportSession)
-    if params[:query].present?
-      @sport_sessions = @sport_sessions.where("sport_sessions.sport_category.name ILIKE ?", "%#{params[:query]}%")
-    end
+    @sport_sessions = SportCategory.find_by(name: params[:query]).sport_sessions if params[:query].present?
  #   @markers = @sport_sessions.venue.geocoded.map do |sport_session|
  #     {
  #       lat: sport_session.latitude,
