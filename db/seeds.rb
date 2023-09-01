@@ -74,8 +74,8 @@ sport_sessions.each do |sport_session|
     {
       title: sport_session[:title],
       description: sport_session[:description],
-      start_time: Date.parse(sport_session[:start_time]),
-      end_time: Date.parse(sport_session[:end_time]),
+      start_time: DateTime.parse(sport_session[:start_time]),
+      end_time: DateTime.parse(sport_session[:end_time]),
       skill_level: sport_session[:skill_level],
       max_attendees: sport_session[:max_attendees],
       price: sport_session[:price],
