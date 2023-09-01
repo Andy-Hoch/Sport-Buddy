@@ -7,8 +7,8 @@
         Home
       </p>
     <% end %>
-    <%= link_to root_path, class:"menu-item" do %>
-      <i class="fa-solid fa-person-running"></i>
+    <%= link_to sport_sessions_path, class:"menu-item" do %>
+      <i class="fas fa-user-friends"></i>
       <p>
         My Sessions
       </p>
@@ -19,7 +19,7 @@
         Chat
       </p>
     <% end %>
-    <%= link_to root_path, class:"menu-item" do %>
+    <%= link_to new_sport_session_path, class:"menu-item" do %>
       <i class="fa-solid fa-plus"></i>
       <p>
         Add Session
