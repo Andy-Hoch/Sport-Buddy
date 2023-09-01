@@ -1,24 +1,18 @@
-<div id="list" class="my-3">
-  <% if @sport_sessions.empty? %>
-    <p>Sorry, no sessions posted yet! Post one here: <%= link_to "New Sport Session", new_sport_session_path %></p>
-  <% else %>
-    <% @sport_sessions.sort_by(&:start_time).each do |session| %>
-      <%= link_to sport_session_path(session) do %>
-        <div class="card session-card mb-3">
-          <div class="card-header">
-            <%= cl_image_tag session.sport_category.photo.key, height: 300, width: 600, crop: :fill, class: "card-img-top" %>
-            <button class="btn btn-primary btn-sm"><%= session.skill_level.capitalize %></button>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= session.title %></h5>
-            <p class="card-text"><small class="text-body-secondary"><%= session.sport_category.name %></small></p>
-            <p class="card-text"><%= session.start_time.strftime("%d.%m.%Y, %H:%M") %> | <%= session.end_time.strftime("%H:%M") %></p>
-            <p class="card-text"><small class="text-body-secondary"><%= session.price == 0 ? "No fee" : number_with_precision(session.price, precision: 2) %><%= session.price == 0 ? "" : "€" %></small></p>
-            <p class="card-text text-end location-name"><%= session.venue.name %></p>
-            <p class="card-text text-end"><small class="text-body-secondary"><%= session.venue.address %></small></p>
-          </div>
-        </div>
+<div class="position-relative" data-controller="map-list-toggle">
+  <div data-map-list-toggle-target="list" class="mt-3" style="margin-bottom: 4.5rem">
+    <% if @sport_sessions.empty? %>
+      <p>Sorry, no sessions posted yet! Post one here: <%= link_to "New Sport Session", new_sport_session_path %></p>
+    <% else %>
+      <% @sport_sessions.sort_by(&:start_time).each do |session| %>
+        <%= render "session_card", session: session %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
+  <div data-map-list-toggle-target="map" class="d-none">
+    <!-- PUT THE MAP IN HERE -->
+    <p>Sorry, no sessions posted yet! And I am A Map. Post one here: <%= link_to "New Sport Session", new_sport_session_path %></p>
+  </div>
+  <button data-action="click->map-list-toggle#fire" data-page="list" data-map-list-toggle-target="button" class="btn btn-primary position-fixed start-50 translate-middle shadow" style="bottom: 73px;">
+    <i class="far fa-map"></i> Show Map
+  </button>
 </div>
