@@ -1,0 +1,21 @@
+<%= link_to sport_session_path(session) do %>
+  <div class="card session-card mb-3">
+    <div class="card-header">
+      <%= cl_image_tag session.sport_category.photo.key, height: 300, width: 600, crop: :fill, class: "card-img-top" %>
+      <button class="btn btn-primary btn-sm"><%= session.skill_level.capitalize %></button>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= session.title %></h5>
+      <p class="card-text"><small class="text-body-secondary"><%= session.sport_category.name %></small></p>
+      <p class="card-text"><%= session.start_time.strftime("%d.%m.%Y, %H:%M") %> - <%= session.end_time.strftime("%H:%M") %></p>
+      <p class="card-text">
+        <small class="text-body-secondary">
+          <%= session.price == 0 ? "No fee" : number_with_precision(session.price, precision: 2) %>
+          <%= session.price == 0 ? "" : "€" %>
+        </small>
+      </p>
+      <p class="card-text text-end location-name"><%= session.venue.name %></p>
+      <p class="card-text text-end"><small class="text-body-secondary"><%= session.venue.address %></small></p>
+    </div>
+  </div>
+<% end %>
