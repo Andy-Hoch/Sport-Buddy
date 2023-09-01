@@ -1,10 +1,10 @@
 class SportSessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %w[index show new create]
+  skip_before_action :authenticate_user!, only: %w[index show new create filter]
   before_action :set_sport_session, only: %w[show edit destroy]
 
   def index
     @sport_sessions = policy_scope(SportSession)
-    @sport_sessions = SportCategory.find_by(name: params[:query]).sport_sessions if params[:query].present?
+    @sport_sessions = SportCategory.find_by(name: params[:query]).sport_sessions if params[:sport].present?
     #   @markers = @sport_sessions.venue.geocoded.map do |sport_session|
     #     {
     #       lat: sport_session.latitude,
