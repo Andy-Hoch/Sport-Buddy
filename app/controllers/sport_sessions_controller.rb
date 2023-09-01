@@ -4,10 +4,13 @@ class SportSessionsController < ApplicationController
 
   def index
     @sport_sessions = policy_scope(SportSession)
-    @markers = @sport_sessions.geocoded.map do |sport_session|
+    @venues = @sport_sessions.map do |session|
+      session.venue
+    end
+    @markers = @venues.map do |venue|
       {
-        lat: sport_session.latitude,
-        lng: sport_session.longitude
+        lat: venue.latitude,
+        lng: venue.longitude
       }
     end
   end
@@ -15,7 +18,7 @@ class SportSessionsController < ApplicationController
   def show
     @full = @sport_session.max_attendees == @sport_session.attendees.count
     authorize @sport_session
-    @marker = { lat: @sport_session.latitude, lng: @sport_session.longitude }
+    @marker = { lat: @sport_session.venue.latitude, lng: @sport_session.venue.longitude }
   end
 
   def new

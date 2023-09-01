@@ -3,7 +3,7 @@
     <%= cl_image_tag @sport_session.sport_category.photo.key, height: 258, width: 390, crop: :fill %>
     <%= link_to "Join", "#", class: "btn btn-primary position-absolute bottom-0 start-0 ms-3 mb-3" %>
     <button class="btn btn-primary btn-sm position-absolute top-0 end-0 me-3 mt-3"><%= @sport_session.skill_level %></button>
-    <%= image_tag "user_lisa.jpg",class:"avatar_banner" %>
+    <%= cl_image_tag @sport_session.user.photo.key, height: 100, width: 100 ,class:"avatar_banner", crop: :fill %>
   </div>
 </div>
 <p class="position-absolute end-0 me-2"><strong><%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %></strong></p>
@@ -23,5 +23,13 @@
   </div>
   <div class="d-flex flex-row">
     <i class="fa-solid fa-user me-3"></i><p><%= @sport_session.max_attendees %> Available Buddies</p>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center my-5" >
+  <div style="width: 100%; height: 500px;"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

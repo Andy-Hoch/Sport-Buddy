@@ -22,8 +22,8 @@ export default class extends Controller {
 
     //Multiple locations for the home page
     this.map = new mapboxgl.Map({
-      container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+    container: this.element,
+     style: "mapbox://styles/mapbox/streets-v10"
     })
     //Multiple
     this.#addMarkersToMap()
