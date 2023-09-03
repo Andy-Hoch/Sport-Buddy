@@ -4,9 +4,8 @@ class SportSessionsController < ApplicationController
 
   def index
     @sport_sessions = policy_scope(SportSession)
-    @venues = @sport_sessions.map do |session|
-      session.venue
-    end
+    @venues = @sport_sessions.map(&:venue)
+
     @markers = @venues.map do |venue|
       {
         lat: venue.latitude,
