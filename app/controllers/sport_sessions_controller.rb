@@ -17,7 +17,11 @@ class SportSessionsController < ApplicationController
   def show
     @full = @sport_session.max_attendees == @sport_session.attendees.count
     authorize @sport_session
-    @marker = { lat: @sport_session.venue.latitude, lng: @sport_session.venue.longitude }
+    @markers = [
+      {
+        lat: @sport_session.venue.latitude,
+        lng: @sport_session.venue.longitude }
+    ]
   end
 
   def new

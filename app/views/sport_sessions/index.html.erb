@@ -8,14 +8,14 @@
       <% end %>
     <% end %>
   </div>
-  <div data-map-list-toggle-target="map">
-    <!-- PUT THE MAP IN HERE -->
-    <div class="container d-flex justify-content-center my-5" >
-      <div style="width: 100%; height: 100%;"
+  <!-- PUT THE MAP IN HERE -->
+  <div class="d-flex justify-content-center" data-map-list-toggle-target="map">
+    <div
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        class="map-container"
+      >
     </div>
   </div>
   <button data-action="click->map-list-toggle#fire" data-page="list" data-map-list-toggle-target="button" class="btn btn-primary position-fixed start-50 translate-middle shadow" style="bottom: 73px;">
