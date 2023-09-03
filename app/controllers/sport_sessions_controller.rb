@@ -20,7 +20,8 @@ class SportSessionsController < ApplicationController
     @markers = [
       {
         lat: @sport_session.venue.latitude,
-        lng: @sport_session.venue.longitude }
+        lng: @sport_session.venue.longitude
+      }
     ]
   end
 
