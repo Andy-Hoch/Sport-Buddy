@@ -1,0 +1,15 @@
+<div class="container chatrooms-list">
+  <h1>Chatrooms</h1>
+
+  <% if @chatrooms.any? %>
+    <ul>
+      <% @chatrooms.each do |chatroom| %>
+        <li>
+          <%= link_to chatroom.sport_session.title, chatroom_path(chatroom) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No chatrooms available.</p>
+  <% end %>
+</div>
