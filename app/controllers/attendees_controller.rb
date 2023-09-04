@@ -2,11 +2,13 @@ class AttendeesController < ApplicationController
   def create
     @attendee = Attendee.new
     @attendee.user = current_user
-    @attendee.sport_session = SportSession.find(params[:sport_session_id])
-    if @attendee.save
-      redirect_to sport_sessions_path
+    @sport_session = SportSession.find(params[:sport_session_id])
+    @attendee.sport_session = @sport_session
+    authorize @attendee
+    if @attendee.save!
+      redirect_to sport_session_path(@sport_session)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to sport_session_path(@sport_session), status: :unprocessable_entity
     end
   end
 end
