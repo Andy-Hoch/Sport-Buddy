@@ -1,0 +1,10 @@
+<div class="container mt-2">
+  <h1><strong>My sport sessions</strong></h1>
+  <% if @my_sessions.empty? %>
+    <p>No sessions scheduled. Look for a session on the <i>homepage</i> or <i>add a session</i>.</p>
+  <% else  %>
+    <% @my_sessions.sort_by(&:start_time).each do |session| %>
+      <%= render "session_card", session: session %>
+    <% end %>
+  <% end  %>
+</div>
