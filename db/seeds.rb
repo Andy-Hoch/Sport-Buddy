@@ -53,13 +53,14 @@ venues = YAML.load_file(venues_path)
 
 venues.each do |venue|
   puts "Creating venue #{venue[:name]}..."
-  new_venue = Venue.create(
+  new_venue = Venue.new(
     {
       name: venue[:name],
       address: venue[:address],
       description: venue[:description]
     }
   )
+  new_venue.save!
 end
 puts "Sport category database cleaned"
 
@@ -79,6 +80,7 @@ sport_sessions.each do |sport_session|
       skill_level: sport_session[:skill_level],
       max_attendees: sport_session[:max_attendees],
       price: sport_session[:price],
+      chatroom: Chatroom.create,
       user: User.all.sample,
       venue: Venue.all.sample,
       sport_category: SportCategory.find_by(name: sport_session[:sport_category])
