@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :sport_sessions, only: %w[index show new create] do
     resources :attendees, only: %w[create]
   end
-  resources :chatrooms, only: %w[show] do
+  resources :chatrooms, only: %w[index show] do
     resources :messages, only: %w[create]
   end
 end
