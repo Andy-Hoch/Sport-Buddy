@@ -8,7 +8,7 @@ class AttendeesController < ApplicationController
     if @attendee.save!
       redirect_to sport_session_path(@sport_session)
     else
-      render :new, status: :unprocessable_entity
+      redirect_to sport_session_path(@sport_session), status: :unprocessable_entity
     end
   end
 end
