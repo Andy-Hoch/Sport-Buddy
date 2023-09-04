@@ -6,8 +6,8 @@ class PagesController < ApplicationController
   end
 
   def list
-    created_sessions = SportSession.where(user_id: current_user.id)
-    # joined_sessions = Attendee.where(user: current_user)
-    @my_sessions = created_sessions # + joined_sessions
+    @created_sessions = current_user.my_events
+    @joined_sessions = current_user.attendees
+    @my_sessions = @created_sessions + @joined_sessions
   end
 end
