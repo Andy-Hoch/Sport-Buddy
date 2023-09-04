@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     end
     resources :attendees, only: %w[create]
   end
+  resources :chatrooms, only: %w[show] do
+    resources :messages, only: %w[create]
+  end
 end
