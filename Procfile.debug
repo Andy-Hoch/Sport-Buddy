@@ -1,0 +1,1 @@
+web: bundle exec rdbg --open -n -c -- bundle exec bin/rails s -p 3000
