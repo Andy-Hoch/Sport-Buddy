@@ -13,16 +13,24 @@ class SportSessionsController < ApplicationController
       }
     end
 
+    date_params_valid = false
+    date_params_exist = params[:date].present?
+    if date_params_exist
+      date_params_valid = params[:date].first.empty? == false
+    end
+
 
     if params[:sport].present?
       @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name = ?", params[:sport])
     end
 
-    if params[:date].present? | params[:date] == ""
-      @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0])
+    if params[:address].present?
+      @venues = @venues.where("address ILIKE ?", "%#{params[:address]}%")
     end
 
-raise
+    if date_params_valid
+      @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0])
+    end
 
    # @sport_sessions = SportSession.where("DATE(start_time) = ?", params[:date]) if params[:date].present? | params[:date] == ""
     #   @markers = @sport_sessions.venue.geocoded.map do |sport_session|
