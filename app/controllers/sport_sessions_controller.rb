@@ -4,7 +4,19 @@ class SportSessionsController < ApplicationController
 
   def index
     @sport_sessions = policy_scope(SportSession)
-    @sport_sessions = SportCategory.find_by(name: params[:query]).sport_sessions if params[:sport].present?
+
+
+    if params[:sport].present?
+      @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name = ?", params[:sport])
+    end
+
+    if params[:date].present? | params[:date] == ""
+      @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0])
+    end
+
+raise
+
+   # @sport_sessions = SportSession.where("DATE(start_time) = ?", params[:date]) if params[:date].present? | params[:date] == ""
     #   @markers = @sport_sessions.venue.geocoded.map do |sport_session|
     #     {
     #       lat: sport_session.latitude,
