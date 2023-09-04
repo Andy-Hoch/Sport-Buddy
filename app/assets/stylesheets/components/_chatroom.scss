@@ -1,0 +1,35 @@
+.chatroom {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 141px);
+}
+
+.messages {
+  flex-grow: 1;
+  overflow-y: scroll;
+  flex-direction: column;
+  display: flex;
+}
+
+.message {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  max-width: 70%;
+}
+
+.user-message {
+  background-color: $grey100;;
+  align-self: flex-end;
+  color: $grey500;
+}
+
+.other-message {
+  background-color: $grey100;
+  align-self: flex-start;
+  color: $grey500;
+}
+
+.input-container {
+  padding: 10px;
+}
