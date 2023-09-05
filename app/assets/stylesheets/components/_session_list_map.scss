@@ -1,3 +1,7 @@
+.list-container {
+  height: calc(100vh - 141px);
+  overflow-y: scroll;
+}
 .map-container {
   border: 1px solid red;
   flex: 1;
