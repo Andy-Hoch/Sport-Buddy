@@ -5,19 +5,11 @@ class SportSessionsController < ApplicationController
   def index
     @sport_sessions = policy_scope(SportSession)
     @venues = @sport_sessions.map(&:venue)
-
-    @markers = @venues.map do |venue|
-      {
-        lat: venue.latitude,
-        lng: venue.longitude
-      }
-    end
+    @markers = @venues.map { |venue| { lat: venue.latitude, lng: venue.longitude } }
 
     date_params_valid = false
     date_params_exist = params[:date].present?
-    if date_params_exist
-      date_params_valid = params[:date].first.empty? == false
-    end
+    date_params_valid = params[:date].first.empty? == false if date_params_exist
 
     if params[:sport].present?
       @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name = ?", params[:sport])
@@ -28,17 +20,7 @@ class SportSessionsController < ApplicationController
       @sport_sessions = @sport_sessions.joins(:venue).where(sql_subquery, address: "%#{params[:address]}%")
     end
 
-    if date_params_valid
-      @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0])
-    end
-
-   # @sport_sessions = SportSession.where("DATE(start_time) = ?", params[:date]) if params[:date].present? | params[:date] == ""
-    #   @markers = @sport_sessions.venue.geocoded.map do |sport_session|
-    #     {
-    #       lat: sport_session.latitude,
-    #       lng: sport_session.longitude
-    #     }
-    #   end
+    @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0]) if date_params_valid
   end
 
   def show
