@@ -25,6 +25,7 @@ class SportSessionsController < ApplicationController
 
   def show
     @full = @sport_session.max_attendees == @sport_session.attendees.count
+    @attending = Attendee.where("user_id = ? AND sport_session_id = ?", current_user, @sport_session).exists?
     authorize @sport_session
     @markers = [
       {
@@ -36,6 +37,7 @@ class SportSessionsController < ApplicationController
 
   def new
     @sport_session = SportSession.new
+    @venue = Venue.new
     authorize @sport_session
   end
 
@@ -79,6 +81,7 @@ class SportSessionsController < ApplicationController
       :end_time,
       :skill_level,
       :max_attendees,
+      :sport_category_id,
       :price,
       :venue_id
     )

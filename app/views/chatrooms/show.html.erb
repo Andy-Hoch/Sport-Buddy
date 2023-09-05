@@ -2,21 +2,23 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
-  <h1>Buddy Chat</h1>
+  <h1 class="mb-3"><%= @chatroom.sport_session.title %></h1>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+        <%= render "messages/message", message: message %>
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom, @message],
-  html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
-  %>
-    <%= f.input :content,
-      label: false,
-      wrapper_html: {class: "flex-grow-1"}
+  <div class="input-container">
+    <%= simple_form_for [@chatroom, @message],
+    html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
+      <%= f.input :content,
+        label: false,
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
+  </div>
 </div>
