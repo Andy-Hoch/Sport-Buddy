@@ -19,13 +19,16 @@ class SportSessionsController < ApplicationController
       date_params_valid = params[:date].first.empty? == false
     end
 
-
     if params[:sport].present?
       @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name = ?", params[:sport])
     end
 
     if params[:address].present?
-      @venues = @venues.where("address ILIKE ?", "%#{params[:address]}%")
+      # if params[:address].present?
+      # @venues = @venues.where("address ILIKE ?", "%#{params[:address]}%")
+       @sport_sessions = @sport_sessions.joins(:venue).where("venues.address ILIKE ?", "%#{params[:address]}%")
+       # @movies = @movies.where("title ILIKE ?", "%#{params[:query]}%"
+     # @sport_sessions = @venues.join(:sport_session).where("venue.address = ?", params[:address])
     end
 
     if date_params_valid
