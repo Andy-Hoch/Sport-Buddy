@@ -1,4 +1,4 @@
-<div class="row justify-content-center">
+<div class="container justify-content-center">
   <div class="col-sm-8 my-3" >
     <%= form_with url: sport_sessions_path, method: :get, class: "d-flex" do %>
       <div class="container">
@@ -34,19 +34,13 @@
       </div>
     <% end %>
   </div>
-<% @sport_categories.sort_by(&:name).each do |cat| %>
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
-  <%= cat.name %>
-</div>
 
-<div class="my-3">
-
-<% @sport_categories.each do |cat| %>
-  <a href="/sport_sessions?sport=<%= cat.name %>">
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
-        <%= cat.name %>
-    </div>
-  </a>
-<% end %>
+  <% @sport_categories.sort_by(&:name).each do |cat| %>
+    <a href="/sport_sessions?sport=<%= cat.name %>">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
+          <%= cat.name %>
+      </div>
+    </a>
+  <% end %>
 
 </div>
