@@ -24,7 +24,20 @@
                             input_html: { data: { controller: "flatpickr" } } %>
             </div>
           </div>
-<p class="text-danger">"Sport-Category"-Selection is missing</p>
+          <div class="form-floating mb-3">
+            <%= f.association :sport_category,
+                              collection: SportCategory.order(:name),
+                              prompt: "Choose a sport category"
+            %>
+        <!--<%= f.input :sport_category,
+                        as: :radio_buttons,
+                        collection: SportCategory.order(:name),
+                        collection_wrapper_tag: 'div',
+                        collection_wrapper_class: 'category-wrapper',
+                        item_wrapper_class: 'category-item',
+                        input_html: {class: 'category-selector'}
+            %> -->
+          </div>
           <div class="form-floating mb-3">
             <%= f.input :skill_level,
                         as: :radio_buttons,
