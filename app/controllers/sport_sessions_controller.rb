@@ -12,7 +12,7 @@ class SportSessionsController < ApplicationController
     date_params_valid = params[:date].first.empty? == false if date_params_exist
 
     if params[:sport].present?
-      @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name = ?", params[:sport])
+      @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name ILIKE ?", params[:sport])
     end
 
     if params[:address].present?
