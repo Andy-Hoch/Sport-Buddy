@@ -2,11 +2,11 @@
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-8">
       <div class="bg-white rounded p-4 shadow" style="margin-bottom: 75px;">
-        <h2 class="pb-3">Create your own Sport Session</h2>
+        <h2 class="pb-3"><strong>Add a Sport Session</strong></h2>
         <%= simple_form_for @sport_session do |f| %>
           <div class="form-floating mb-3">
             <%= f.input_field :title, class: "form-control mb-3", placeholder: "Title" %>
-            <%= f.label :title, 'Your Title please' %>
+            <%= f.label :title, 'Give your session a title' %>
           </div>
           <div class="form-floating mb-3">
             <%= f.association :venue,
@@ -16,13 +16,14 @@
           </div>
           <div id="new-venue">
             <!-- Button trigger modal -->
+            <p><i>Venue not found? Add a new one.</i></p>
             <button type="button" class="btn btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#venueModal">
-              Create a new Venue
+              Add venue
             </button>
           </div>
           <div class="form-floating mb-3">
             <%= f.input_field :description, class: "form-control mb-3", placeholder: "Description" %>
-            <%= f.label :description, 'Your Description please' %>
+            <%= f.label :description, 'How would you describe the session?' %>
           </div>
           <div class="row g-3">
             <div class="col-md-6">
@@ -68,7 +69,7 @@
             <%= f.input_field :price, class: "form-control mb-3", placeholder: "Price" %>
             <%= f.label :price, 'Total price in €' %>
           </div>
-          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= f.submit 'Add session', class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
@@ -81,7 +82,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add new venue</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><strong>Add new venue</strong></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -94,7 +95,7 @@
                 <%=  f.input_field :address, class: "form-control mb-3", placeholder: "Address of the new Venue" %>
                 <%= f.label :address, 'New venue address' %>
               </div>
-              <%= f.button :submit, class: "btn btn-primary" %>
+              <%= f.submit 'Add venue', class: "btn btn-primary" %>
           </div>
         <% end %>
       <div class="modal-footer">
