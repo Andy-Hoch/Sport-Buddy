@@ -2,18 +2,20 @@
   <div class="col-sm-8 my-3" >
     <%= form_with url: sport_sessions_path, method: :get, class: "d-flex" do %>
       <div class="container">
+        <%=  image_tag "Logo_sportbuddy.png", alt: "sportbuddy icon" %>
+        <h5 class="my-2"><strong>Find your sport match here:</strong></h5>
         <div class="row my-3">
           <%= text_field_tag :sport,
             params[:sport],
             class: "form-control",
-            placeholder: "Sport (eg. football)"
+            placeholder: "Type in your sport..."
           %>
         </div>
         <div class="row my-3">
           <%= text_field_tag :address,
             params[:address],
             class: "form-control",
-            placeholder: "Address"
+            placeholder: "Add the location..."
           %>
         </div>
 
