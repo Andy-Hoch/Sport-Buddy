@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :chatrooms, only: %w[index show] do
     resources :messages, only: %w[create]
   end
+  resources :venues, only: %w[create]
 end

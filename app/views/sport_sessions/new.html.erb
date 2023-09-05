@@ -1,12 +1,24 @@
 <div class="container py-5">
   <div class="row d-flex justify-content-center">
     <div class="col-12 col-md-8">
-      <div class="bg-white rounded p-4 shadow">
+      <div class="bg-white rounded p-4 shadow" style="margin-bottom: 75px;">
         <h2 class="pb-3">Create your own Sport Session</h2>
         <%= simple_form_for @sport_session do |f| %>
           <div class="form-floating mb-3">
             <%= f.input_field :title, class: "form-control mb-3", placeholder: "Title" %>
             <%= f.label :title, 'Your Title please' %>
+          </div>
+          <div class="form-floating mb-3">
+            <%= f.association :venue,
+                              collection: Venue.order(:name),
+                              prompt: "Choose a venue"
+            %>
+          </div>
+          <div id="new-venue">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-primary mb-3" data-bs-toggle="modal" data-bs-target="#venueModal">
+              Create a new Venue
+            </button>
           </div>
           <div class="form-floating mb-3">
             <%= f.input_field :description, class: "form-control mb-3", placeholder: "Description" %>
@@ -24,7 +36,20 @@
                             input_html: { data: { controller: "flatpickr" } } %>
             </div>
           </div>
-<p class="text-danger">"Sport-Category"-Selection is missing</p>
+          <div class="form-floating mb-3">
+            <%= f.association :sport_category,
+                              collection: SportCategory.order(:name),
+                              prompt: "Choose a sport category"
+            %>
+        <!--<%= f.input :sport_category,
+                        as: :radio_buttons,
+                        collection: SportCategory.order(:name),
+                        collection_wrapper_tag: 'div',
+                        collection_wrapper_class: 'category-wrapper',
+                        item_wrapper_class: 'category-item',
+                        input_html: {class: 'category-selector'}
+            %> -->
+          </div>
           <div class="form-floating mb-3">
             <%= f.input :skill_level,
                         as: :radio_buttons,
@@ -45,6 +70,35 @@
           </div>
           <%= f.button :submit, class: "btn btn-primary" %>
         <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="venueModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add new venue</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @venue do |f| %>
+          <div class="form-floating mb-3">
+                <%=  f.input_field :name, class: "form-control mb-3", placeholder: "Name of the new Venue" %>
+                <%= f.label :name, 'New venue name' %>
+              </div>
+              <div class="form-floating mb-3">
+                <%=  f.input_field :address, class: "form-control mb-3", placeholder: "Address of the new Venue" %>
+                <%= f.label :address, 'New venue address' %>
+              </div>
+              <%= f.button :submit, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
