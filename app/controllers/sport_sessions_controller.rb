@@ -1,17 +1,26 @@
 class SportSessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %w[index show new create]
+  skip_before_action :authenticate_user!, only: %w[index show new create filter]
   before_action :set_sport_session, only: %w[show edit destroy]
 
   def index
     @sport_sessions = policy_scope(SportSession)
     @venues = @sport_sessions.map(&:venue)
+    @markers = @venues.map { |venue| { lat: venue.latitude, lng: venue.longitude } }
 
-    @markers = @venues.map do |venue|
-      {
-        lat: venue.latitude,
-        lng: venue.longitude
-      }
+    date_params_valid = false
+    date_params_exist = params[:date].present?
+    date_params_valid = params[:date].first.empty? == false if date_params_exist
+
+    if params[:sport].present?
+      @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name = ?", params[:sport])
     end
+
+    if params[:address].present?
+      sql_subquery = "venues.address ILIKE :address OR venues.name ILIKE :address"
+      @sport_sessions = @sport_sessions.joins(:venue).where(sql_subquery, address: "%#{params[:address]}%")
+    end
+
+    @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0]) if date_params_valid
   end
 
   def show

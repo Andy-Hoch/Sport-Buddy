@@ -1,9 +1,52 @@
-<div class="container my-3">
+<div class="row justify-content-center">
+  <div class="col-sm-8 my-3" >
+    <%= form_with url: sport_sessions_path, method: :get, class: "d-flex" do %>
+      <div class="container">
+        <div class="row my-3">
+          <%= text_field_tag :sport,
+            params[:sport],
+            class: "form-control",
+            placeholder: "Sport (eg. football)"
+          %>
+        </div>
+        <div class="row my-3">
+          <%= text_field_tag :address,
+            params[:address],
+            class: "form-control",
+            placeholder: "Address"
+          %>
+        </div>
 
+        <div class="row my-3">
+          <%= date_field :date,
+            params[:date],
+            class: "form-control",
+            placeholder: "Date",
+            as: :string,
+            input_html: { data: { controller: "birthdate" } }
+
+          %>
+        </div>
+
+        <div class="row">
+          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% @sport_categories.sort_by(&:name).each do |cat| %>
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
   <%= cat.name %>
 </div>
+
+<div class="my-3">
+
+<% @sport_categories.each do |cat| %>
+  <a href="/sport_sessions?sport=<%= cat.name %>">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
+        <%= cat.name %>
+    </div>
+  </a>
 <% end %>
 
 </div>
