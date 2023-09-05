@@ -28,6 +28,7 @@ class SportSessionsController < ApplicationController
 
   def new
     @sport_session = SportSession.new
+    @venue = Venue.new
     authorize @sport_session
   end
 
@@ -71,6 +72,7 @@ class SportSessionsController < ApplicationController
       :end_time,
       :skill_level,
       :max_attendees,
+      :sport_category_id,
       :price,
       :venue_id
     )
