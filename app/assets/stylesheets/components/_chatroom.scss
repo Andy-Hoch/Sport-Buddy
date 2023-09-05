@@ -19,7 +19,7 @@
 }
 
 .user-message {
-  background-color: $grey100;;
+  background-color: $green200;
   align-self: flex-end;
   color: $grey500;
 }
@@ -32,4 +32,8 @@
 
 .input-container {
   padding: 10px;
+}
+
+#message_content {
+  border-color: $grey100;
 }
