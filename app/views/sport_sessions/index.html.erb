@@ -1,5 +1,5 @@
 <div class="position-relative" data-controller="map-list-toggle">
-  <div data-map-list-toggle-target="list" class="pt-3 container list-container" style="margin-bottom: 4.5rem">
+  <div data-map-list-toggle-target="list" class="pt-3 container list-container d-none" style="margin-bottom: 4.5rem">
     <% if @sport_sessions.empty? %>
       <p>Sorry, no sessions posted yet! Post one here: <%= link_to "New Sport Session", new_sport_session_path %></p>
     <% else %>
@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <!-- PUT THE MAP IN HERE -->
-  <div class="d-flex justify-content-center d-none" data-map-list-toggle-target="map">
+  <div class="d-flex justify-content-center" data-map-list-toggle-target="map">
     <div
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
