@@ -9,7 +9,6 @@
             placeholder: "Sport (eg. football)"
           %>
         </div>
-
         <div class="row my-3">
           <%= text_field_tag :address,
             params[:address],
@@ -28,13 +27,15 @@
 
           %>
         </div>
-
         <div class="row">
           <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>
   </div>
+<% @sport_categories.sort_by(&:name).each do |cat| %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
+  <%= cat.name %>
 </div>
 
 <div class="my-3">

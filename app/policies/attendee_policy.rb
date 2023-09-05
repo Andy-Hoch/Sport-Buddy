@@ -1,4 +1,4 @@
-class ChatroomPolicy < ApplicationPolicy
+class AttendeePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,7 +6,7 @@ class ChatroomPolicy < ApplicationPolicy
     end
   end
 
-  def show?
+  def create?
     true
   end
 end
