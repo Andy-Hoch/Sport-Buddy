@@ -35,7 +35,13 @@
   </p>
   <p>
     <i class="fa-solid fa-user me-3"></i>
-    <%= @sport_session.max_attendees - @sport_session.attendees.count %> spaces available
+    <% if @sport_session.max_attendees - @sport_session.attendees.count > 1 %>
+      available spaces: <%= @sport_session.max_attendees - @sport_session.attendees.count %>
+    <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 1 %>
+      available space: <%= @sport_session.max_attendees - @sport_session.attendees.count %>
+    <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 0 %>
+      fully booked
+    <% end %>
   </p>
 </div>
 <div class="container d-flex justify-content-center my-5" >
