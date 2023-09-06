@@ -3,37 +3,43 @@ class SportSessionsController < ApplicationController
   before_action :set_sport_session, only: %w[show edit destroy]
 
   def index
+    # ALL Sport Sessions
     @sport_sessions = policy_scope(SportSession)
+
+    # 1. Filter to hide all Sessions which have already started...
     @sport_sessions = @sport_sessions.where('start_time > ?', Time.now)
-    @markers = @sport_sessions.map do |sportsession|
-      {
-        lat: sportsession.venue.latitude,
-        lng: sportsession.venue.longitude,
-        info_window_html: render_to_string(
-          partial: "map_details",
-          locals: { sportsession: sportsession }
-        ),
-        marker_html: render_to_string(
-          partial: "map_marker",
-          locals: { sportsession: sportsession }
-        )
-      }
-    end
 
-    date_params_valid = false
-    date_params_exist = params[:date].present?
-    date_params_valid = params[:date].first.empty? == false if date_params_exist
+    # 2. Filter to hide all Sessions which are already full...
+    # @sport_sessions = @sport_sessions
+    # .joins(:attendees)
+    # .group('sport_sessions.id')
+    # .having('COUNT(attendees.id) < sport_sessions.max_attendees')
 
+    # 3. Filter to show only the Sport Sessions of the Sport Category which is in the search.
+    # We delete leading and trailing whitespace of the params variable.
     if params[:sport].present?
-      @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name ILIKE ?", params[:sport])
+      @sport_sessions = @sport_sessions.joins(:sport_category).where("sport_categories.name ILIKE ?", params[:sport].strip)
     end
 
+    # 4. Filter to show only the Sport Sessions where the address or the venue name is searched for.
     if params[:address].present?
       sql_subquery = "venues.address ILIKE :address OR venues.name ILIKE :address"
       @sport_sessions = @sport_sessions.joins(:venue).where(sql_subquery, address: "%#{params[:address]}%")
     end
 
+    # 5. Filter to show all Sport sessions of the correct date
+    date_params_valid = false
+    date_params_exist = params[:date].present?
+    date_params_valid = params[:date].first.empty? == false if date_params_exist
+
     @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0]) if date_params_valid
+
+    # Give the view some Markers
+    @markers = @sport_sessions.map do |sportsession|
+      { lat: sportsession.venue.latitude, lng: sportsession.venue.longitude,
+        info_window_html: render_to_string(partial: "map_details", locals: { sportsession: sportsession }),
+        marker_html: render_to_string(partial: "map_marker", locals: { sportsession: sportsession }) }
+    end
   end
 
   def show
@@ -43,7 +49,8 @@ class SportSessionsController < ApplicationController
     @markers = [
       {
         lat: @sport_session.venue.latitude,
-        lng: @sport_session.venue.longitude
+        lng: @sport_session.venue.longitude,
+        marker_html: render_to_string(partial: "map_marker", locals: { sportsession: @sportsession })
       }
     ]
   end
