@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 
   def list
     @created_sessions = current_user.my_events
-    @joined_sessions = current_user.attendees
+    @joined_sessions = current_user.attendees.map(&:sport_session)
     @my_sessions = @created_sessions + @joined_sessions
   end
 end

@@ -1,9 +1,9 @@
 <div class="container mt-2">
-  <h1><strong>All sessions</strong></h1>
+  <h1 class="mb-4"><strong>My sessions</strong></h1>
   <% if @my_sessions.empty? %>
     <p>No sessions scheduled. Look for a session on the <i>homepage</i> or <i>add a session</i>.</p>
   <% elsif @created_sessions.empty? %>
-      <h4><strong>Sessions I join:</strong></h4>
+      <h4><strong>Sessions I joined:</strong></h4>
     <% @joined_sessions.sort_by(&:start_time).each do |session| %>
       <%= render "session_card", session: session %>
     <% end %>
@@ -13,10 +13,12 @@
       <%= render "session_card", session: session %>
     <% end %>
   <% else %>
+    <h4><strong>Sessions I joined:</strong></h4>
     <% @joined_sessions.sort_by(&:start_time).each do |session| %>
       <%= render "session_card", session: session %>
     <% end %>
-    <hr>
+    <hr class="my-4">
+    <h4><strong>Sessions I added:</strong></h4>
     <% @created_sessions.sort_by(&:start_time).each do |session| %>
       <%= render "session_card", session: session %>
     <% end %>
