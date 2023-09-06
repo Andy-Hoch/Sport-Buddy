@@ -1,4 +1,4 @@
-<div class="message <%= message.user == current_user ? 'user-message' : 'other-message' %>" data-message-user-id="<%= message.user.id %>">
+<div class="message <%= message.user == current_user ? 'user-message' : 'other-message' %>" data-chatroom-subscription-target="message" data-message-sender-id="<%= message.user.id %>">
   <small>
     <strong><%= message.user.first_name %></strong>
     <i class="ms-2 grey"><%= message.created_at.strftime("%a, %d.%m. %H:%M") %></i>
