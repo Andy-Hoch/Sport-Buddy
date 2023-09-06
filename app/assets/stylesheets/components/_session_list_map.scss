@@ -1,9 +1,22 @@
 .list-container {
-  height: calc(100vh - 141px);
+  width: 100vw;
   overflow-y: scroll;
 }
 .map-container {
-  border: 1px solid red;
+  position:fixed;
+  left: 0;
   flex: 1;
+  width: 100%;
   height: calc(100vh - 141px);
+}
+
+.technically-gone {
+  transform: translateX(100vw);
+}
+
+.toggle-container {
+  width: 100vw;
+  position: relative;
+  height: auto;
+  overflow: hidden;
 }

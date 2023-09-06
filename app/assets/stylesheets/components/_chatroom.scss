@@ -9,13 +9,17 @@
   overflow-y: scroll;
   flex-direction: column;
   display: flex;
+  justify-content: flex-end;
 }
 
 .message {
   padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
+  margin: 8px;
+  border-radius: $border-radius;
   max-width: 70%;
+  .grey {
+    color: $grey400;
+  }
 }
 
 .user-message {
@@ -31,9 +35,20 @@
 }
 
 .input-container {
-  padding: 10px;
+  padding: 8px;
 }
 
 #message_content {
-  border-color: $grey100;
+  border-color: $green300;
+}
+
+.chat-input > input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-right-width: 0px;
+}
+
+.chat-submit {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
 }

@@ -1,6 +1,6 @@
 <div class="container pt-3 chatrooms-list">
-  <h1 class="mb-4">Chatrooms</h1>
-    <% if @chatrooms.any? %>
+  <h1>Chatrooms</h1>
+    <% if @chatrooms.any? %> <%# we need to check that we only show chatrooms of our sessions... %>
       <div class="row mx-0">
         <% @chatrooms.each do |chatroom| %>
           <div class="col-md-4 mb-4">
