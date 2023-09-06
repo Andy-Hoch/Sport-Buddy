@@ -12,11 +12,13 @@ class SportSessionsController < ApplicationController
         info_window_html: render_to_string(
           partial: "map_details",
           locals: { sportsession: sportsession }
+        ),
+        marker_html: render_to_string(
+          partial: "map_marker",
+          locals: { sportsession: sportsession }
         )
       }
     end
-
-
 
     date_params_valid = false
     date_params_exist = params[:date].present?
