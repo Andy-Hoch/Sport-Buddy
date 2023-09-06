@@ -4,6 +4,8 @@ class SportSessionsController < ApplicationController
 
   def index
     @sport_sessions = policy_scope(SportSession)
+    @sport_sessions = @sport_sessions.where('start_time > ?', Time.now)
+
     @venues = @sport_sessions.map(&:venue)
     @markers = @venues.map { |venue| { lat: venue.latitude, lng: venue.longitude } }
 
