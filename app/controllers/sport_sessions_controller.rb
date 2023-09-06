@@ -34,7 +34,7 @@ class SportSessionsController < ApplicationController
 
     @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0]) if date_params_valid
 
-    # Give the marker some Markers
+    # Give the view some Markers
     @markers = @sport_sessions.map do |sportsession|
       { lat: sportsession.venue.latitude, lng: sportsession.venue.longitude,
         info_window_html: render_to_string(partial: "map_details", locals: { sportsession: sportsession }),
