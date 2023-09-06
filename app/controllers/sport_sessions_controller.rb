@@ -5,9 +5,20 @@ class SportSessionsController < ApplicationController
   def index
     @sport_sessions = policy_scope(SportSession)
     @sport_sessions = @sport_sessions.where('start_time > ?', Time.now)
-
-    @venues = @sport_sessions.map(&:venue)
-    @markers = @venues.map { |venue| { lat: venue.latitude, lng: venue.longitude } }
+    @markers = @sport_sessions.map do |sportsession|
+      {
+        lat: sportsession.venue.latitude,
+        lng: sportsession.venue.longitude,
+        info_window_html: render_to_string(
+          partial: "map_details",
+          locals: { sportsession: sportsession }
+        ),
+        marker_html: render_to_string(
+          partial: "map_marker",
+          locals: { sportsession: sportsession }
+        )
+      }
+    end
 
     date_params_valid = false
     date_params_exist = params[:date].present?
