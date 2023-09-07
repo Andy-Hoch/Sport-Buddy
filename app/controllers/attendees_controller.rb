@@ -6,6 +6,7 @@ class AttendeesController < ApplicationController
     @attendee.sport_session = @sport_session
     authorize @attendee
     if @attendee.save!
+      flash[:notice] = "Successfully joined the session!"
       redirect_to sport_session_path(@sport_session)
     else
       redirect_to sport_session_path(@sport_session), status: :unprocessable_entity

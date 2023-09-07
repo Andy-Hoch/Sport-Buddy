@@ -67,6 +67,7 @@ class SportSessionsController < ApplicationController
     @sport_session.chatroom = Chatroom.create
     authorize @sport_session
     if @sport_session.save
+      flash[:notice] = "Found a buddy!"
       redirect_to sport_sessions_path
     else
       render :new, status: :unprocessable_entity
