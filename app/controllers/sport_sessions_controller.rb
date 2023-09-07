@@ -9,10 +9,7 @@ class SportSessionsController < ApplicationController
     # 1. Filter to hide all Sessions which have already started...
     @sport_sessions = @sport_sessions.where('start_time > ?', Time.now)
 
-    # 2. Filter to hide all Sessions which are already full...
-    # @sport_sessions = @sport_sessions.reject do |session|
-    #   session.attendees.count >= session.max_attendees
-    # end
+    # 2. Filter is in the bottom, right now, line 35. Because we cannot continue filtering with joins on an array.
 
     # 3. Filter to show only the Sport Sessions of the Sport Category which is in the search.
     # We delete leading and trailing whitespace of the params variable.
@@ -33,6 +30,11 @@ class SportSessionsController < ApplicationController
       @date_value = params[:date].instance_of?(Array) ? params[:date][0] : params[:date].values[0]
       date_params_valid = @date_value.instance_of?(String) && @date_value.length == 10
       @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", @date_value) if date_params_valid
+    end
+
+    # 2. Filter to hide all Sessions which are already full...
+    @sport_sessions = @sport_sessions.reject do |session|
+      session.attendees.count >= session.max_attendees
     end
 
     # Give the view some Markers
