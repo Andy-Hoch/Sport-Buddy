@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class SportSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %w[index show new create filter]
   before_action :set_sport_session, only: %w[show edit destroy]
