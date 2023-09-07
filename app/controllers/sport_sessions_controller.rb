@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class SportSessionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %w[index show new create filter]
   before_action :set_sport_session, only: %w[show edit destroy]
@@ -10,10 +11,9 @@ class SportSessionsController < ApplicationController
     @sport_sessions = @sport_sessions.where('start_time > ?', Time.now)
 
     # 2. Filter to hide all Sessions which are already full...
-    # @sport_sessions = @sport_sessions
-    # .joins(:attendees)
-    # .group('sport_sessions.id')
-    # .having('COUNT(attendees.id) < sport_sessions.max_attendees')
+    @sport_sessions = @sport_sessions.reject do |session|
+      session.attendees.count >= session.max_attendees
+    end
 
     # 3. Filter to show only the Sport Sessions of the Sport Category which is in the search.
     # We delete leading and trailing whitespace of the params variable.
