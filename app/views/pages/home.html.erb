@@ -1,9 +1,9 @@
 <div class="container justify-content-center">
+  <%= image_tag "Logo_sportbuddy.png", alt:"sportbuddy icon", class:"mb-3 mt-4" %>
   <div class="my-3" >
     <%= form_with url: sport_sessions_path, method: :get do %>
       <div>
-        <%=  image_tag "Logo_sportbuddy.png", alt: "sportbuddy icon" %>
-        <h5 class="my-2"><strong>Find your sport match here:</strong></h5>
+        <h5 class="my-3"><strong>Find your sport match here:</strong></h5>
         <div class="form-floating mb-3">
           <%= text_field_tag :sport,
             params[:sport],
