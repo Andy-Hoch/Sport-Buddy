@@ -5,16 +5,14 @@
       <button class="btn btn-primary btn-sm"><%= session.skill_level.capitalize %></button>
     </div>
     <div class="card-body">
-      <h5 class="card-title"><%= session.title %></h5>
-      <p class="card-text"><small class="text-body-secondary"><%= session.sport_category.name %></small></p>
-      <p class="card-text"><%= session.start_time.strftime("%d.%m.%Y, %H:%M") %> - <%= session.end_time.strftime("%H:%M") %></p>
+      <h5 class="card-title mb-2"><strong><%= session.title %></strong></h5>
+      <p class="card-text"><i><%= session.sport_category.name %></i></p>
+      <p class="card-text"><%= session.start_time.strftime("%a, %b %e | %H:%M") %> - <%= session.end_time.strftime("%H:%M") %></p>
       <p class="card-text">
-        <small class="text-body-secondary">
-          <%= session.price == 0 ? "No fee" : number_with_precision(session.price, precision: 2) %>
-          <%= session.price == 0 ? "" : "€" %>
-        </small>
+        <%= session.price == 0 ? "No fee" : number_with_precision(session.price, precision: 2) %>
+        <%= session.price == 0 ? "" : "€" %>
       </p>
-      <p class="card-text text-end location-name"><%= session.venue.name %></p>
+      <p class="card-text text-end location-name"><strong><%= session.venue.name %></strong></p>
       <p class="card-text text-end"><small class="text-body-secondary"><%= session.venue.address %></small></p>
     </div>
   </div>
