@@ -9,8 +9,8 @@
         <h5>
           <strong><%= @sport_session.title %></strong>
         </h5>
-        <p class="my-1">
-          with <%= @sport_session.user.first_name %>
+        <p class="my-1" id="creator-grey">
+          with <i><%= @sport_session.user.first_name %></i>
         </p>
       </div>
       <div class="align-self-center">
@@ -20,23 +20,37 @@
     <p class="mb-3">
       <%= @sport_session.description %>
     </p>
-    <p>
-      <i class="fa-solid fa-location-dot me-3"></i><%= @sport_session.venue.address %>
-    </p>
-    <p>
-      <i class="fa-solid fa-clock me-3"></i>
-      <%= @sport_session.start_time.strftime("%d.%m.%Y | %H:%M") %> - <%= @sport_session.end_time.strftime("%H:%M") %>
-    </p>
-    <p>
-      <i class="fa-solid fa-user me-3"></i>
-      <% if @sport_session.max_attendees - @sport_session.attendees.count > 1 %>
-        <%= @sport_session.max_attendees - @sport_session.attendees.count %> available spaces | <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
-      <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 1 %>
-        <%= @sport_session.max_attendees - @sport_session.attendees.count %> available space | <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
-      <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 0 %>
-        fully booked | <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
-      <% end %>
-    </p>
+    <div class="d-flex py-1">
+      <div class="align-self-center">
+        <i class="fa-solid fa-location-dot me-3"></i>
+      </div>
+      <div>
+        <%= @sport_session.venue.address %>
+      </div>
+    </div>
+    <div class="d-flex py-1">
+      <div class="align-self-center">
+        <i class="fa-solid fa-clock me-3"></i>
+      </div>
+      <div>
+        <%= @sport_session.start_time.strftime("%a, %b %e | %H:%M") %> - <%= @sport_session.end_time.strftime("%H:%M") %>
+      </div>
+    </div>
+    <div class="d-flex py-1">
+      <div class="align-self-center">
+        <i class="fa-solid fa-user me-3"></i>
+      </div>
+      <div>
+        <% if @sport_session.max_attendees - @sport_session.attendees.count > 1 %>
+          <%= @sport_session.max_attendees - @sport_session.attendees.count %> available spaces | <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
+        <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 1 %>
+          <%= @sport_session.max_attendees - @sport_session.attendees.count %> available space | <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
+        <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 0 %>
+          fully booked | <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
+        <% end %>
+      </div>
+    </div>
+
     <% if @attending || @creator %>
       <%= link_to "Visit Chat", chatroom_path(@sport_session.chatroom), class: "btn btn-primary w-100 my-3" %>
     <% else %>
