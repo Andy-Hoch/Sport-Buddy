@@ -32,3 +32,11 @@
   background-color: $primary;
   font-weight: bold;
 }
+
+#sport_session_venue_id, #sport_session_sport_category_id {
+  padding: 1rem 2.25rem 1rem 0.75rem
+}
+
+input.form-control.string.required.flatpickr-input.flatpickr-mobile {
+  padding: 1rem 0.75rem;
+}

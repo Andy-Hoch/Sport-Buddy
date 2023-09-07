@@ -28,11 +28,13 @@ class SportSessionsController < ApplicationController
     end
 
     # 5. Filter to show all Sport sessions of the correct date
-    date_params_valid = false
     date_params_exist = params[:date].present?
-    date_params_valid = params[:date].first.empty? == false if date_params_exist
 
-    @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", params[:date][0]) if date_params_valid
+    if date_params_exist
+      @date_value = params[:date].instance_of?(Array) ? params[:date][0] : params[:date].values[0]
+      date_params_valid = @date_value.instance_of?(String) && @date_value.length == 10
+      @sport_sessions = @sport_sessions.where("DATE(start_time) = ?", @date_value) if date_params_valid
+    end
 
     # Give the view some Markers
     @markers = @sport_sessions.map do |sportsession|
