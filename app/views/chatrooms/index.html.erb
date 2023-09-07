@@ -1,0 +1,31 @@
+<div class="container pt-3 chatrooms-list">
+  <h1 class="mb-4"><strong>Buddy chats</strong></h1>
+    <% if @chatrooms.any? %> <%# we need to check that we only show chatrooms of our sessions... %>
+      <div class="row mx-0">
+        <% @chatrooms.each do |chatroom| %>
+          <%# render "chatroom_item", chatrooom: chatroom %>
+          <%= link_to chatroom_path(chatroom) do %>
+            <div class="col-md-4 mb-3">
+              <div class="card bg-white row">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                      <%= cl_image_tag chatroom.sport_session.sport_category.photo.key, height: 60, width: 60,crop: :fill, class: "rounded-circle me-3" %>
+                      <div class="single-line-text">
+                        <h5 class="card-title fw-bold text-truncate"><%= chatroom.sport_session.title %></h5>
+                        <% if chatroom.messages.any? %>
+                          <p class="mb-0 text-truncate"><strong><%= chatroom.messages.last.user.first_name %>:</strong> <%= chatroom.messages.last.content %></p>
+                        <% else %>
+                          <p class="mb-0"><i>No messages</i></p>
+                        <% end %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>No chatrooms available.</p>
+    <% end %>
+</div>

@@ -1,9 +1,65 @@
-<div class="container my-3">
+<div class="container justify-content-center">
+  <div class="my-3" >
+    <div class="d-flex justify-content-between">
+      <!-- Button trigger modal -->
+      <%= link_to "All sessions", sport_sessions_path, class:"btn btn-primary" %>
+      <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <i class="fa-solid fa-sliders"></i> Filter sessions
+      </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="staticBackdropLabel">Filter</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <%= form_with url: sport_sessions_path, method: :get do %>
+            <div class="modal-body">
+                <h5 class="my-3"><strong>Find your sport match here:</strong></h5>
+                <div class="form-floating mb-3">
+                  <%= text_field_tag :sport,
+                    params[:sport],
+                    class: "form-control",
+                    placeholder: "Sport..."
+                  %>
+                  <label for="sport">Sport...</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <%= text_field_tag :address,
+                    params[:address],
+                    class: "form-control",
+                    placeholder: "Location..."
+                  %>
+                  <label for="address">Location...</label>
+                </div>
+                <div class="my-3">
+                  <%= date_field :date,
+                    params[:date],
+                    class: "form-control py-3",
+                    placeholder: "Date",
+                    as: :string,
+                    input_html: { data: { controller: "birthdate" } }
+                  %>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+              <%= submit_tag "Filter", name: "", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<% @sport_categories.each do |cat| %>
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
-  <%= cat.name %>
-</div>
-<% end %>
+  <% @sport_categories.sort_by(&:name).each do |cat| %>
+    <a href="/sport_sessions?sport=<%= cat.name %>">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path cat.photo.key, height: 300, crop: :fill %>')">
+          <%= cat.name %>
+      </div>
+    </a>
+  <% end %>
 
 </div>

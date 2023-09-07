@@ -1,0 +1,13 @@
+.chatrooms-list {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .single-line-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+}
