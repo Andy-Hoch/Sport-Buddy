@@ -45,6 +45,7 @@ class SportSessionsController < ApplicationController
   def show
     @full = @sport_session.max_attendees == @sport_session.attendees.count
     @attending = Attendee.where("user_id = ? AND sport_session_id = ?", current_user, @sport_session).exists?
+    @creator = current_user == @sport_session.user
     authorize @sport_session
     @markers = [
       {
@@ -84,7 +85,7 @@ class SportSessionsController < ApplicationController
 
   def destroy
     @sport_session.destroy
-    redirect_to sport_sessions_path, status: :see_other
+    redirect_to my_sessions_path, status: :see_other
   end
 
   private
