@@ -1,5 +1,5 @@
 <div>
-  <%= cl_image_tag sportsession.sport_category.photo.key, height: 100, width: 200,crop: :fill %>
+  <%= cl_image_tag sportsession.sport_category.photo.key, height: 100, width: 200,crop: :fill, class: "rouded-top" %>
   <div class="map-popup-content d-flex flex-column">
     <h6><%= sportsession.title %></h6>
     <p><%= sportsession.venue.name %></p>
