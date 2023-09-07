@@ -1,51 +1,66 @@
-<div class="d-flex justify-content-center" >
-  <div class="banner">
-    <%= cl_image_tag @sport_session.sport_category.photo.key, height: 258, width: 390, crop: :fill %>
+<div class="card session-card m-3">
+  <div class="card card-header">
+    <%= cl_image_tag @sport_session.sport_category.photo.key, height: 300, width: 600, crop: :fill, class: "card-img-top" %>
+    <button class="btn btn-primary btn-sm"><%= @sport_session.skill_level.capitalize %></button>
+  </div>
+  <div class="card-body">
+    <h1>
+      <%= @sport_session.title %>
+    </h1>
+    <p>
+      <i class="fa-solid fa-location-dot me-3"></i><%= @sport_session.venue.address %>
+    </p>
+    <p>
+      <%= @sport_session.description %>
+    </p>
+    <p>
+      <i class="fa-solid fa-phone me-3"></i><% formatted_phone_number = number_to_phone(@sport_session.user.phone_number, area_code: true) %>
+      <%= link_to formatted_phone_number, "Call Buddy" %>
+    </p>
+    <p>
+      <i class="fa-solid fa-clock me-3"></i>
+      <%= @sport_session.start_time.strftime("%d.%m.%Y, %H:%M") %> - <%= @sport_session.end_time.strftime("%H:%M") %>
+    </p>
+    <p>
+      <i class="fa-solid fa-user me-3"></i>
+      <% if @sport_session.max_attendees - @sport_session.attendees.count > 1 %>
+        available spaces: <%= @sport_session.max_attendees - @sport_session.attendees.count %>
+      <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 1 %>
+        available space: <%= @sport_session.max_attendees - @sport_session.attendees.count %>
+      <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 0 %>
+        fully booked
+      <% end %>
+    </p>
+    <p class="text-end">
+      <strong>
+        <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
+      </strong>
+    </p>
     <% if @attending || @creator %>
-      <%= link_to "Visit Chat", chatroom_path(@sport_session.chatroom), class: "btn btn-primary position-absolute bottom-0 start-0 ms-3 mb-3" %>
+      <%= link_to "Visit Chat", chatroom_path(@sport_session.chatroom), class: "btn btn-primary w-100" %>
     <% else %>
-      <%= link_to "Join", sport_session_attendees_path(@sport_session), data: { turbo_method: "post" }, class: "btn btn-primary position-absolute bottom-0 start-0 ms-3 mb-3" %>
+      <%= link_to "Join", sport_session_attendees_path(@sport_session), data: { turbo_method: "post" }, class: "btn btn-primary w-100" %>
     <% end %>
-    <button class="btn btn-primary btn-sm position-absolute top-0 end-0 me-3 mt-3"><%= @sport_session.skill_level %></button>
-    <%= cl_image_tag @sport_session.user.photo.key, height: 100, width: 100 ,class:"avatar_banner", crop: :fill %>
   </div>
 </div>
+
+<%# <div class="d-flex justify-content-center" > %>
+  <%# <div class="banner"> %>
+    <%# cl_image_tag @sport_session.sport_category.photo.key, height: 258, width: 390, crop: :fill %>
+    <%# if @attending || @creator %>
+      <%# link_to "Visit Chat", chatroom_path(@sport_session.chatroom), class: "btn btn-primary position-absolute bottom-0 start-0 ms-3 mb-3" %>
+    <%# else %>
+      <%# link_to "Join", sport_session_attendees_path(@sport_session), data: { turbo_method: "post" }, class: "btn btn-primary position-absolute bottom-0 start-0 ms-3 mb-3" %>
+    <%# end %>
+    <%# <button class="btn btn-primary btn-sm position-absolute top-0 end-0 me-3 mt-3"><%# @sport_session.skill_level %></button> %>
+    <%# cl_image_tag @sport_session.user.photo.key, height: 100, width: 100 ,class:"avatar_banner", crop: :fill %>
+  <%# </div>
+</div> %>
+
 <div class="container">
-  <p class="text-end">
-    <strong>
-      <%= @sport_session.price == 0 ? "No fee" : number_with_precision(@sport_session.price, precision: 2) %><%= @sport_session.price == 0 ? "" : "€" %>
-    </strong>
-  </p>
-  <h1>
-    <%= @sport_session.title %>
-  </h1>
-  <p>
-    <i class="fa-solid fa-location-dot me-3"></i><%= @sport_session.venue.address %>
-  </p>
-  <p>
-    <%= @sport_session.description %>
-  </p>
-  <p>
-    <i class="fa-solid fa-phone me-3"></i><% formatted_phone_number = number_to_phone(@sport_session.user.phone_number, area_code: true) %>
-    <%= link_to formatted_phone_number, "Call Buddy" %>
-  </p>
-  <p>
-    <i class="fa-solid fa-clock me-3"></i>
-    <%= @sport_session.start_time.strftime("%d.%m.%Y, %H:%M") %> - <%= @sport_session.end_time.strftime("%H:%M") %>
-  </p>
-  <p>
-    <i class="fa-solid fa-user me-3"></i>
-    <% if @sport_session.max_attendees - @sport_session.attendees.count > 1 %>
-      available spaces: <%= @sport_session.max_attendees - @sport_session.attendees.count %>
-    <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 1 %>
-      available space: <%= @sport_session.max_attendees - @sport_session.attendees.count %>
-    <% elsif @sport_session.max_attendees - @sport_session.attendees.count == 0 %>
-      fully booked
-    <% end %>
-  </p>
 </div>
-<div class="container d-flex justify-content-center my-5" >
-  <div style="width: 100%; height: 500px;"
+<div class="container rounded-2 d-flex justify-content-center my-5" >
+  <div class="rounded-2" style="width: 100%; height: 500px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
