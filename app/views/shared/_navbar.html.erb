@@ -4,7 +4,9 @@
       <%= link_to root_path, class: "navbar-brand" do %>
         <%= image_tag "sportbuddy_icon.png" %>
       <% end %>
-      <%= image_tag "Logo_sportbuddy.png", alt:"sportbuddy icon", width: 184, height: 29, class:"mt-3" %>
+      <%= link_to root_path do %>
+        <%= image_tag "Logo_sportbuddy.png", alt:"sportbuddy icon", width: 184, height: 29, class:"mt-3" %>
+      <% end %>
     </div>
 
     <% if user_signed_in? %>
