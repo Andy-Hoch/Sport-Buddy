@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center" >
   <div class="banner">
     <%= cl_image_tag @sport_session.sport_category.photo.key, height: 258, width: 390, crop: :fill %>
-    <% if @attending %>
+    <% if @attending || @creator %>
       <%= link_to "Visit Chat", chatroom_path(@sport_session.chatroom), class: "btn btn-primary position-absolute bottom-0 start-0 ms-3 mb-3" %>
     <% else %>
       <%= link_to "Join", sport_session_attendees_path(@sport_session), data: { turbo_method: "post" }, class: "btn btn-primary position-absolute bottom-0 start-0 ms-3 mb-3" %>
