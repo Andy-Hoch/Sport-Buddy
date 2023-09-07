@@ -20,6 +20,9 @@
   .grey {
     color: $grey400;
   }
+  p {
+    word-break: break-word;
+  }
 }
 
 .user-message {

@@ -1,0 +1,19 @@
+<%= link_to sport_session_path(session) do %>
+  <div class="card session-card mb-3">
+    <div class="card-header">
+      <%= cl_image_tag session.sport_category.photo.key, height: 300, width: 600, crop: :fill, class: "card-img-top" %>
+      <button class="btn btn-primary btn-sm"><%= session.skill_level.capitalize %></button>
+      <div class="position-absolute" style="bottom:0px; left:8px; height:calc(50% - 8px); width:calc(100% - 16px); background-image: linear-gradient(0deg, rgba(0,0,0,0.67), transparent)"></div>
+      <h5 class="card-title position-absolute" style="bottom:8px; left:16px; color:white"><%= session.title %></h5>
+    </div>
+    <div class="card-body row">
+      <div class="col">
+        <p class="card-text" style="font-size:14px; margin-bottom:0px;"><i class="fas fa-calendar-day"></i> <%= session.start_time.strftime("%a, %d. %b %y") %></p>
+        <p class="card-text" style="font-size:14px;"><i class="far fa-clock"></i> <%= session.start_time.strftime("%H:%M") %> - <%= session.end_time.strftime("%H:%M") %></p>
+      </div>
+      <div class="col">
+        <p class="card-text location-name" style="font-size:14px;"><%= session.venue.name %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
