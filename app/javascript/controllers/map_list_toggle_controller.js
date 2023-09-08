@@ -9,10 +9,10 @@ export default class extends Controller {
     this.listTarget.classList.toggle("technically-gone");
     this.mapTarget.classList.toggle("technically-gone");
     if (currentPage == "list") {
-      this.buttonTarget.innerHTML = '<i class="fas fa-list-ul"></i> Show List';
+      this.buttonTarget.innerHTML = '<span class="btn-text-white"><i class="fas fa-list-ul"></i> Show List</span>';
       this.buttonTarget.dataset.page = "map";
     } else {
-      this.buttonTarget.innerHTML = '<i class="far fa-map"></i> Show Map';
+      this.buttonTarget.innerHTML = '<span class="btn-text-white"><i class="far fa-map"></i> Show Map</span>';
       this.buttonTarget.dataset.page = "list";
     }
   }
